@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Caerus.Common.Modules.Authentication.Interfaces;
+using Caerus.Common.Modules.Client.Interfaces;
+using Caerus.Common.Modules.Configuration.Interfaces;
+using Caerus.Common.Modules.FieldMapping.Interfaces;
 using Caerus.Common.Modules.Session;
 using Caerus.Common.Modules.Session.Interfaces;
 
@@ -14,14 +18,13 @@ namespace Caerus.Common.Auth.Session
         private long _currentUser;
         private string _emailAddress;
         private string _cellNumber;
-
         private bool _isAuthenticated;
         public CaerusSession()
         {
 
         }
 
-        public CaerusSession(string userName, string password)
+        public CaerusSession(string userName)
         {
 
         }
@@ -29,15 +32,27 @@ namespace Caerus.Common.Auth.Session
         #region Properties
         public bool IsAuthenticated
         {
-            get
-            {
-                return _isAuthenticated;
-            }
+            get { return _isAuthenticated; }
+        }
+        public long CurrentUserRef
+        {
+            get { return _currentUser; }
+        }
+        public string Email
+        {
+            get { return _emailAddress; }
+        }
+        public string CellNumber
+        {
+            get { return _cellNumber; }
         }
         #endregion
 
         #region Services
-
+        public IAuthenticationService AuthenticationService { get; set; }
+        public IConfigurationService ConfigurationService { get; set; }
+        public IClientService ClientService { get; set; }
+        public IFieldMappingService FieldMappingService { get; set; }
         #endregion
     }
 }
