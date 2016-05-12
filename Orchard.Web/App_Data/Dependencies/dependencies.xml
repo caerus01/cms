@@ -765,11 +765,6 @@
         <VirtualPath>~/Modules/Orchard.Tokens/bin/Orchard.Tokens.dll</VirtualPath>
       </Reference>
       <Reference>
-        <Name>YamlDotNet</Name>
-        <LoaderName>PrecompiledExtensionLoader</LoaderName>
-        <VirtualPath>~/Modules/Orchard.Layouts/bin/YamlDotNet.dll</VirtualPath>
-      </Reference>
-      <Reference>
         <Name>YamlDotNet.Dynamic</Name>
         <LoaderName>PrecompiledExtensionLoader</LoaderName>
         <VirtualPath>~/Modules/Orchard.Blogs/bin/YamlDotNet.Dynamic.dll</VirtualPath>
@@ -1864,6 +1859,12 @@
   <Dependency>
     <ModuleName>TheThemeMachine</ModuleName>
     <VirtualPath>~/Themes/TheThemeMachine</VirtualPath>
+    <LoaderName>RawThemeExtensionLoader</LoaderName>
+    <References />
+  </Dependency>
+  <Dependency>
+    <ModuleName>TheThemeMachineResponsive</ModuleName>
+    <VirtualPath>~/Themes/TheThemeMachineResponsive</VirtualPath>
     <LoaderName>RawThemeExtensionLoader</LoaderName>
     <References />
   </Dependency>

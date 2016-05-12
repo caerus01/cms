@@ -1,0 +1,33 @@
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.Owin.Security.Cookies;
+
+namespace AuthenticationService.Providers
+{
+    public class OwinCookieProvider : ICookieAuthenticationProvider
+    {
+        public Task ValidateIdentity(CookieValidateIdentityContext context) {
+            throw new NotImplementedException();
+        }
+
+        public void ResponseSignIn(CookieResponseSignInContext context) {
+            throw new NotImplementedException();
+        }
+
+        public void ResponseSignedIn(CookieResponseSignedInContext context) {
+            throw new NotImplementedException();
+        }
+
+        public void ApplyRedirect(CookieApplyRedirectContext context) {
+            throw new NotImplementedException();
+        }
+
+        public void ResponseSignOut(CookieResponseSignOutContext context) {
+            throw new NotImplementedException();
+        }
+
+        public void Exception(CookieExceptionContext context) {
+            throw new NotImplementedException();
+        }
+    }
+}
