@@ -54,7 +54,7 @@ namespace Caerus.Common.Data.DataProviders
                 throw new ArgumentNullException("No user specified for use this module");
             _currentUser = currentUser;
             this.Configuration.LazyLoadingEnabled = lazyloading;
-
+            
             SetupCacheProvider(provider);
         }
 

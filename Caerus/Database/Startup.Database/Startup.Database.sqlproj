@@ -59,6 +59,8 @@
     <Folder Include="Properties" />
     <Folder Include="ScalarFunctions" />
     <Folder Include="StoreProcedures" />
+    <Folder Include="Release" />
+    <Folder Include="Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="ScalarFunctions\CamelCase.sql" />
@@ -67,5 +69,11 @@
     <Build Include="ScalarFunctions\GetModuleSetting.sql" />
     <Build Include="StoreProcedures\GetTableValuesByKey.sql" />
     <Build Include="ScalarFunctions\IsModuleInUse.sql" />
+    <Build Include="Tables\Log.sql" />
+    <Build Include="Tables\ModuleConfigurations.sql" />
+    <Build Include="Tables\ModuleSettings.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Release\release-date-script.sql" />
   </ItemGroup>
 </Project>

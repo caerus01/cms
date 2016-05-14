@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
@@ -23,6 +24,8 @@ namespace Caerus.Common.Logging
         private void Configure()
         {
             log4net.Config.XmlConfigurator.Configure();
+            var source = ConfigurationManager.AppSettings.Get("source");
+            log4net.LogicalThreadContext.Properties["Source"] = !string.IsNullOrEmpty(source) ? source : "unknown";
         }
 
         public void LogInfo(string infoMessage, object[] properties = null)
@@ -164,8 +167,6 @@ namespace Caerus.Common.Logging
                 body.Message = string.IsNullOrEmpty(message) ? string.Format("Exception has occurred in : {0}", body.LoggerMethod) : string.Format("Exception has occurred in : {0} - {1}", body.LoggerMethod, message);
             else
                 body.Message = string.IsNullOrEmpty(message) ? string.Format("{0}", body.LoggerMethod) : string.Format("{0} - {1}", body.LoggerMethod, message);
-            body.Message += GetAdditionalMessages(ex);
-
 
             log4net.LogicalThreadContext.Properties["Parameters"] = "";
             if (properties != null && properties.Any())
@@ -179,72 +180,9 @@ namespace Caerus.Common.Logging
                 }
                 log4net.LogicalThreadContext.Properties["Parameters"] = builder.ToString();
             }
-
-
             return body;
         }
 
-        /// <summary>
-        /// Gets additional error information based on handlers for specific exception types
-        /// </summary>
-        /// <param name="ex"></param>
-        /// <param name="depth">How deep to recurse into inner exceptions</param>
-        /// <returns></returns>
-        private string GetAdditionalMessages(Exception ex, int depth = 2)
-        {
-            try
-            {
-                var result = "";
-                if (depth > 1 && ex.InnerException != null)
-                {
-                    result += "\n" + GetAdditionalMessages(ex.InnerException, depth - 1);
-                }
-                var types = GetLoggerHandlers();
-                if (types == null || !types.Any()) { return result; }
-
-                var handler = GetHandlerForCurrentMethod(ex, types);
-                if (handler == null) { return result; }
-
-                var method = handler.GetMethod("GetAdditionalMessage");
-                if (method == null) { return result; }
-
-                result += CallMessageHandlerMethod(ex, handler, method);
-
-                return result;
-            }
-            catch (Exception)
-            {
-                return "";
-            }
-        }
-
-        private string CallMessageHandlerMethod(Exception ex, Type handler, MethodInfo method)
-        {
-            var instance = Activator.CreateInstance(handler);
-
-            object[] parametersArray = new object[] { ex };
-            var result = (string)method.Invoke(instance, parametersArray);
-            return result;
-        }
-
-        private Type GetHandlerForCurrentMethod(Exception ex, IEnumerable<Type> types)
-        {
-            return types.FirstOrDefault(c =>
-                c.GetInterfaces().Any(x =>
-                    x.IsGenericType &&
-                    x.GetGenericTypeDefinition() == typeof(IExceptionLoggerHandler<>)
-                    &&
-                    x.GetGenericArguments().First() == ex.GetType()
-                    )
-                );
-        }
-
-        private IEnumerable<Type> GetLoggerHandlers()
-        {
-            return AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(t => t.GetTypes())
-                .Where(t => t.IsClass && t.Namespace == "Atlas.Common.Logging.LoggerTypeHandlers");
-        }
 
         private class LoggingBody
         {
