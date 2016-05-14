@@ -1,7 +1,7 @@
 ﻿using Caerus.Common.Data.DataProviders;
 using Caerus.Common.Enums;
 
-namespace ConfigurationService.Repository.Context
+namespace Configuration.Service.Repository.Context
 {
     public class CaerusContext : EfDataProvider
     {

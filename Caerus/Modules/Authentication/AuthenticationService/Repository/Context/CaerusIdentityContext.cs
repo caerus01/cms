@@ -1,10 +1,7 @@
-﻿using Caerus.Common.Data.DataProviders;
-using Caerus.Common.Data.Interfaces;
-using Caerus.Common.Enums;
-using Caerus.Common.Modules.Authentication.Entities;
+﻿using Caerus.Common.Modules.Authentication.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace AuthenticationService.Repository.Context
+namespace Authentication.Service.Repository.Context
 {
     public class CaerusIdentityContext : IdentityDbContext<CaerusUser>
     {

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using Caerus.Common.Interfaces;
 using Caerus.Common.Logging.Interfaces;
 
@@ -24,11 +25,11 @@ namespace Caerus.Common.Logging
         private void Configure()
         {
             log4net.Config.XmlConfigurator.Configure();
-            var source = ConfigurationManager.AppSettings.Get("source");
+            var source = ConfigurationManager.AppSettings["source"];
             log4net.LogicalThreadContext.Properties["Source"] = !string.IsNullOrEmpty(source) ? source : "unknown";
         }
 
-        public void LogInfo(string infoMessage, object[] properties = null)
+        public void LogInfo(string infoMessage, dynamic[] properties = null)
         {
             try
             {
@@ -42,12 +43,12 @@ namespace Caerus.Common.Logging
         }
 
         // Logging a Debug message
-        public void LogDebug(string debugMessage, object[] properties = null)
+        public void LogDebug(string debugMessage, dynamic[] properties = null)
         {
             try
             {
                 var body = BuildLog(null, debugMessage, properties);
-                Task.Run(() => log.Debug(body.Message));
+                log.Debug(body.Message);
             }
             catch (Exception ex)
             {
@@ -56,12 +57,12 @@ namespace Caerus.Common.Logging
         }
 
         //Logging a Warning message
-        public void LogWarning(string message, Exception exception = null, object[] properties = null)
+        public void LogWarning(string message, Exception exception = null, dynamic[] properties = null)
         {
             try
             {
                 var body = BuildLog(exception, message, properties);
-                Task.Run(() => log.Warn(body.Message, body.Exception));
+                log.Warn(body.Message, body.Exception);
             }
             catch (Exception ex)
             {
@@ -70,12 +71,12 @@ namespace Caerus.Common.Logging
         }
 
         // Logging a Error message
-        public void LogError(string methodName, Exception exception = null, object[] properties = null)
+        public void LogError(string methodName, Exception exception = null, dynamic[] properties = null)
         {
             try
             {
                 var body = BuildLog(exception, methodName, properties);
-                Task.Run(() => log.Error(body.Message, body.Exception));
+                log.Error(body.Message, body.Exception);
             }
             catch (Exception ex)
             {
@@ -83,12 +84,12 @@ namespace Caerus.Common.Logging
             }
         }
 
-        public void LogError(string error, object[] properties = null)
+        public void LogError(string error, dynamic[] properties = null)
         {
             try
             {
                 var body = BuildLog(null, error, properties);
-                Task.Run(() => log.Error(body.Message, null));
+                log.Error(body.Message, null);
             }
             catch (Exception ex)
             {
@@ -96,12 +97,12 @@ namespace Caerus.Common.Logging
             }
         }
 
-        public void LogError(Exception exc, object[] properties = null)
+        public void LogError(Exception exc, dynamic[] properties = null)
         {
             try
             {
                 var body = BuildLog(exc, "", properties);
-                Task.Run(() => log.Error(body.Message, body.Exception));
+                log.Error(body.Message, body.Exception);
             }
             catch (Exception ex)
             {
@@ -110,7 +111,7 @@ namespace Caerus.Common.Logging
         }
 
         // Logging a Fatal message
-        public void LogFatal(string methodName, Exception exception = null, object[] properties = null)
+        public void LogFatal(string methodName, Exception exception = null, dynamic[] properties = null)
         {
 
 
@@ -121,7 +122,7 @@ namespace Caerus.Common.Logging
                 if (!String.IsNullOrEmpty(methodName))
                     message = methodName + " - " + message;
 
-                Task.Run(() => log.Fatal(message, exception));
+                log.Fatal(message, exception);
             }
             catch (Exception ex)
             {
@@ -137,7 +138,7 @@ namespace Caerus.Common.Logging
                 log4net.Config.XmlConfigurator.Configure();
 
                 var body = BuildLog(exception);
-                Task.Run(() => log.Fatal(body.Message, exception));
+                log.Fatal(body.Message, exception);
             }
             catch (Exception ex)
             {
@@ -145,12 +146,12 @@ namespace Caerus.Common.Logging
             }
         }
 
-        public void LogSystemActivity(string description, long? reference = null, object[] properties = null)
+        public void LogSystemActivity(string description, long? reference = null, dynamic[] properties = null)
         {
             LogInfo(description + " : " + reference.ToString());
         }
 
-        private LoggingBody BuildLog(Exception ex, string message = "", object[] properties = null)
+        private LoggingBody BuildLog(Exception ex, string message = "", dynamic[] properties = null)
         {
             var body = new LoggingBody { Exception = ex };
             var frame = new StackTrace().GetFrame(2);
@@ -169,6 +170,8 @@ namespace Caerus.Common.Logging
                 body.Message = string.IsNullOrEmpty(message) ? string.Format("{0}", body.LoggerMethod) : string.Format("{0} - {1}", body.LoggerMethod, message);
 
             log4net.LogicalThreadContext.Properties["Parameters"] = "";
+            log4net.LogicalThreadContext.Properties["User"] = "";
+            log4net.LogicalThreadContext.Properties["Origin"] = "";
             if (properties != null && properties.Any())
             {
                 var builder = new StringBuilder();
@@ -176,9 +179,14 @@ namespace Caerus.Common.Logging
                 foreach (var item in properties)
                 {
                     cnt++;
-                    builder.AppendLine(string.Format("{1} : {0}", item.ToString(), cnt));
+                    builder.AppendLine(string.Format("({0})", item.ToString(), cnt));
                 }
                 log4net.LogicalThreadContext.Properties["Parameters"] = builder.ToString();
+            }
+            if (HttpContext.Current != null)
+            {
+                log4net.LogicalThreadContext.Properties["User"] = HttpContext.Current.User.Identity.Name;
+                log4net.LogicalThreadContext.Properties["Origin"] = HttpContext.Current.Request.UserHostAddress;
             }
             return body;
         }

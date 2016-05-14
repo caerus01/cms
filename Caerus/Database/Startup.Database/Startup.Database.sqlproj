@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{ac93cd57-e2c0-4dfd-8462-0cdb31322e6f}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -69,7 +69,7 @@
     <Build Include="ScalarFunctions\GetModuleSetting.sql" />
     <Build Include="StoreProcedures\GetTableValuesByKey.sql" />
     <Build Include="ScalarFunctions\IsModuleInUse.sql" />
-    <Build Include="Tables\Log.sql" />
+    <Build Include="Tables\CaerusLog.sql" />
     <Build Include="Tables\ModuleConfigurations.sql" />
     <Build Include="Tables\ModuleSettings.sql" />
   </ItemGroup>

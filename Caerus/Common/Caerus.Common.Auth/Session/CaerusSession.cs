@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Caerus.Common.Auth.DependancyInjector;
+using Caerus.Common.Enums;
 using Caerus.Common.Interfaces;
 using Caerus.Common.Logging;
 using Caerus.Common.Modules.Authentication.Interfaces;
@@ -22,6 +24,7 @@ namespace Caerus.Common.Auth.Session
         private string _emailAddress;
         private string _cellNumber;
         private bool _isAuthenticated;
+        
         public CaerusSession()
         {
 
@@ -52,8 +55,22 @@ namespace Caerus.Common.Auth.Session
         #endregion
 
         #region Services
-        public IAuthenticationService AuthenticationService { get; set; }
-        public IConfigurationService ConfigurationService { get; set; }
+        private IAuthenticationService _authenticationService;
+
+        public IAuthenticationService AuthenticationService
+        {
+            get
+            {
+                return _authenticationService ?? (_authenticationService = CaerusSessionInjectorService.GetService<IAuthenticationService>(this, ModuleTypes.Authentication));
+            }
+            set { _authenticationService = value; }
+        }
+        private IConfigurationService _configurationService;
+        public IConfigurationService ConfigurationService
+        {
+            get { return _configurationService ?? (_configurationService = CaerusSessionInjectorService.GetService<IConfigurationService>(this, ModuleTypes.Configuration)); }
+            set { _configurationService = value; }
+        }
         public IClientService ClientService { get; set; }
         public IFieldMappingService FieldMappingService { get; set; }
         public INotificationService NotificationService { get; set; }

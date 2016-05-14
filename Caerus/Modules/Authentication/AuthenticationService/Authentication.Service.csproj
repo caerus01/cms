@@ -7,8 +7,8 @@
     <ProjectGuid>{87EA423A-09E9-405D-A183-516821CA2835}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AuthenticationService</RootNamespace>
-    <AssemblyName>AuthenticationService</AssemblyName>
+    <RootNamespace>Authentication.Service</RootNamespace>
+    <AssemblyName>Authentication.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

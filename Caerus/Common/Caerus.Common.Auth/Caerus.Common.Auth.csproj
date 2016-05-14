@@ -53,6 +53,10 @@
       <Project>{be43721b-ee7e-4d5e-a416-b2a696b5aee4}</Project>
       <Name>Caerus.Common.Modules</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Caerus.Common.Stub\Caerus.Common.Stub.csproj">
+      <Project>{60334971-b7ac-469e-a0ea-ffe4e3812efc}</Project>
+      <Name>Caerus.Common.Stub</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Caerus.Common\Caerus.Common.csproj">
       <Project>{37386a98-4a7f-4197-965b-fc9eba8166c7}</Project>
       <Name>Caerus.Common</Name>

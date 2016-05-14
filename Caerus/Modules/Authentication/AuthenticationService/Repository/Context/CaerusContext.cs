@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Caerus.Common.Data.DataProviders;
+﻿using Caerus.Common.Data.DataProviders;
 using Caerus.Common.Enums;
 
-namespace AuthenticationService.Repository.Context
+namespace Authentication.Service.Repository.Context
 {
     public class CaerusContext : EfDataProvider
     {

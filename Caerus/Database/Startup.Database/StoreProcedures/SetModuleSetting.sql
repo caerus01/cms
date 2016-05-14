@@ -2,7 +2,6 @@
 CREATE PROCEDURE [dbo].[SetModuleSetting]
 @Module int,
 @Setting int, 
-@Country bigint,
 @Value nvarchar(250),
 @User bigint = null
 AS
@@ -13,15 +12,15 @@ if @User is null
 BEGIN TRY
 	BEGIN TRANSACTION
 
-	if (select COUNT(*) from ModuleSettings where [ModuleId] = @Module and [SettingId] = @Setting and [CountryRefId] = @Country) = 0
+	if (select COUNT(*) from ModuleSettings where [ModuleId] = @Module and [SettingId] = @Setting ) = 0
 	begin
 		insert ModuleSettings 
-		select @Module,@Country,@Setting,@Value,GETDATE(),GETDATE(),@User, @User
+		select @Module,@Setting,@Value,GETDATE(),GETDATE(),@User, @User
 	end
 	else
 	begin
 		update ModuleSettings set SettingValue = @Value, DateModified = GETDATE(), UserModified = @User
-		where [ModuleId] = @Module and [SettingId] = @Setting and [CountryRefId] = @Country
+		where [ModuleId] = @Module and [SettingId] = @Setting 
 	end
 	COMMIT TRANSACTION
 END TRY

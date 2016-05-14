@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
-using AuthenticationService.IdentityManagers;
-using AuthenticationService.Providers;
-using AuthenticationService.Repository;
-using AuthenticationService.Repository.Context;
+using Authentication.Service.IdentityManagers;
+using Authentication.Service.Providers;
+using Authentication.Service.Repository.Context;
 using Caerus.Common.Modules.Authentication.Entities;
 using Caerus.Common.Modules.Authentication.Interfaces;
 using Caerus.Common.Modules.Session.Interfaces;
@@ -17,7 +13,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 
-namespace AuthenticationService
+namespace Authentication.Service
 {
     public class AuthenticationService : IAuthenticationService
     {

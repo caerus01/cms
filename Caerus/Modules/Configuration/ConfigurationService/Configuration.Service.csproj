@@ -7,8 +7,8 @@
     <ProjectGuid>{2D0E1FE1-0E59-41EB-ABE8-A4742551B44F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConfigurationService</RootNamespace>
-    <AssemblyName>ConfigurationService</AssemblyName>
+    <RootNamespace>Configuration.Service</RootNamespace>
+    <AssemblyName>Configuration.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>

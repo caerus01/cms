@@ -1,12 +1,12 @@
 ﻿using System;
-using AuthenticationService.Repository.Context;
+using Authentication.Service.Repository.Context;
 using Caerus.Common.Modules.Authentication.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-namespace AuthenticationService.IdentityManagers
+namespace Authentication.Service.IdentityManagers
 {
     public class CaerusUserManager : UserManager<CaerusUser>
     {

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AuthenticationService.Repository.Context;
+﻿using Authentication.Service.Repository.Context;
 using Caerus.Common.Modules.Authentication.Interfaces;
 
-namespace AuthenticationService.Repository
+namespace Authentication.Service.Repository
 {
     public class AuthenticationRepository : IAuthenticationRepository
     {

@@ -1,5 +1,5 @@
 ﻿
-CREATE TABLE [dbo].[Log](
+CREATE TABLE [dbo].[CaerusLog](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Date] [datetime] NOT NULL,
 	[Thread] [varchar](255) NOT NULL,
@@ -9,6 +9,8 @@ CREATE TABLE [dbo].[Log](
 	[Exception] [varchar](MAX) NULL,
 	[Source] [varchar](200) NULL,
 	[Parameters] [varchar](2000) NULL, 
+    [User] VARCHAR(50) NULL, 
+    [Origin] VARCHAR(50) NULL, 
     CONSTRAINT [PK_Log] PRIMARY KEY ([Id])
 ) ON [PRIMARY]
 

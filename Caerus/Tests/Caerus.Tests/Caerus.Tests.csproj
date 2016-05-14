@@ -17,6 +17,8 @@
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
     <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +38,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.Hosting.3.0.1\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -51,16 +65,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Base\BaseTest.cs" />
     <Compile Include="Extensions\ExtensionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceTests\AuthenticationServiceTests.cs" />
+    <Compile Include="ServiceTests\ConfigurationServiceTests.cs" />
+    <Compile Include="Session\CaerusSessionTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Base\" />
     <Folder Include="Fakes\" />
     <Folder Include="LoadTests\" />
     <Folder Include="Mocks\" />
     <Folder Include="RepositoryTests\" />
-    <Folder Include="ServiceTests\" />
     <Folder Include="WebPerformanceTests\" />
   </ItemGroup>
   <ItemGroup>
@@ -92,14 +108,18 @@
       <Project>{37386a98-4a7f-4197-965b-fc9eba8166c7}</Project>
       <Name>Caerus.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Modules\Authentication\AuthenticationService\AuthenticationService.csproj">
+    <ProjectReference Include="..\..\Modules\Authentication\AuthenticationService\Authentication.Service.csproj">
       <Project>{87ea423a-09e9-405d-a183-516821ca2835}</Project>
-      <Name>AuthenticationService</Name>
+      <Name>Authentication.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Modules\Configuration\ConfigurationService\ConfigurationService.csproj">
+    <ProjectReference Include="..\..\Modules\Configuration\ConfigurationService\Configuration.Service.csproj">
       <Project>{2d0e1fe1-0e59-41eb-abe8-a4742551b44f}</Project>
-      <Name>ConfigurationService</Name>
+      <Name>Configuration.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
@@ -121,6 +141,13 @@
   </Choose>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
