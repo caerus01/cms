@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Extensions\ExtensionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +61,44 @@
     <Folder Include="RepositoryTests\" />
     <Folder Include="ServiceTests\" />
     <Folder Include="WebPerformanceTests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Caerus.Common.Auth\Caerus.Common.Auth.csproj">
+      <Project>{682c507a-3b92-45ed-a5d3-2aa7931e2295}</Project>
+      <Name>Caerus.Common.Auth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Caerus.Common.Data\Caerus.Common.Data.csproj">
+      <Project>{c1935f08-fbce-49d9-a5ca-df72865c87ae}</Project>
+      <Name>Caerus.Common.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Caerus.Common.Logging\Caerus.Common.Logging.csproj">
+      <Project>{ca928bd2-b124-4db4-95f9-6fae529e320f}</Project>
+      <Name>Caerus.Common.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Caerus.Common.Modules\Caerus.Common.Modules.csproj">
+      <Project>{be43721b-ee7e-4d5e-a416-b2a696b5aee4}</Project>
+      <Name>Caerus.Common.Modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Caerus.Common.Tools\Caerus.Common.Tools.csproj">
+      <Project>{d71dddc9-decd-4a08-a3aa-9c3c2ba06109}</Project>
+      <Name>Caerus.Common.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Caerus.Common.Web\Caerus.Common.Web.csproj">
+      <Project>{c561b4a2-931e-4e30-a72c-d05682a21d18}</Project>
+      <Name>Caerus.Common.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Caerus.Common\Caerus.Common.csproj">
+      <Project>{37386a98-4a7f-4197-965b-fc9eba8166c7}</Project>
+      <Name>Caerus.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Authentication\AuthenticationService\AuthenticationService.csproj">
+      <Project>{87ea423a-09e9-405d-a183-516821ca2835}</Project>
+      <Name>AuthenticationService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Configuration\ConfigurationService\ConfigurationService.csproj">
+      <Project>{2d0e1fe1-0e59-41eb-abe8-a4742551b44f}</Project>
+      <Name>ConfigurationService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

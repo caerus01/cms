@@ -96,7 +96,6 @@
     <Compile Include="Repository\AuthenticationRepository.cs" />
     <Compile Include="Repository\Context\CaerusContext.cs" />
     <Compile Include="Repository\Context\CaerusIdentityContext.cs" />
-    <Compile Include="StubAuthenticationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Caerus.Common.Data\Caerus.Common.Data.csproj">

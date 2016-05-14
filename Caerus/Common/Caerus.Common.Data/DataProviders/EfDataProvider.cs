@@ -16,6 +16,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Caerus.Common.Data.Interfaces;
 using Caerus.Common.Enums;
+using Caerus.Common.Extentions;
 using Caerus.Common.Interfaces;
 
 namespace Caerus.Common.Data.DataProviders
@@ -284,6 +285,15 @@ namespace Caerus.Common.Data.DataProviders
                     }
                 }
             }
+            return result;
+        }
+
+
+        public string GetKeyByCustom(string item, List<object> items)
+        {
+            var result = string.Format("cache_{0}_{1}", ModuleId.AsInt(), item);
+            if (items != null)
+                return items.Aggregate(result, (current, val) => current + string.Format("_{0}", val.ToString()));
             return result;
         }
     }

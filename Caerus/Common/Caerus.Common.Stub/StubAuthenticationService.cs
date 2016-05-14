@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Caerus.Common.Modules.Authentication.Interfaces;
 
-namespace AuthenticationService
+namespace Caerus.Common.Stub
 {
-    public class StubAuthenticationService: IAuthenticationService
+    public class StubAuthenticationService : IAuthenticationService
     {
         public void ConfigureAuth(Owin.IAppBuilder app)
         {
