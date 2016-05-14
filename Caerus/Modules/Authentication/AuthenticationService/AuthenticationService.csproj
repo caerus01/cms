@@ -80,6 +80,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -92,7 +93,10 @@
     <Compile Include="IdentityManagers\CaerusUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CookieAuthenticationProvider.cs" />
-    <Compile Include="Repository\CaerusContext.cs" />
+    <Compile Include="Repository\AuthenticationRepository.cs" />
+    <Compile Include="Repository\Context\CaerusContext.cs" />
+    <Compile Include="Repository\Context\CaerusIdentityContext.cs" />
+    <Compile Include="StubAuthenticationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Caerus.Common.Data\Caerus.Common.Data.csproj">

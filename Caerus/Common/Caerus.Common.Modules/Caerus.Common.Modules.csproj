@@ -67,6 +67,8 @@
     <Compile Include="Authentication\Interfaces\IAuthenticationService.cs" />
     <Compile Include="Client\Enums\ClientTypes.cs" />
     <Compile Include="Client\Interfaces\IClientService.cs" />
+    <Compile Include="Configuration\Entities\ModuleConfiguration.cs" />
+    <Compile Include="Configuration\Entities\ModuleSetting.cs" />
     <Compile Include="Configuration\Interfaces\IConfigurationService.cs" />
     <Compile Include="FieldMapping\Interfaces\IFieldMappingService.cs" />
     <Compile Include="Notification\Enums\DeliveryTypes.cs" />
@@ -83,7 +85,6 @@
     <Folder Include="Authentication\ViewModels\" />
     <Folder Include="Client\Entities\" />
     <Folder Include="Client\ViewModels\" />
-    <Folder Include="Configuration\Entities\" />
     <Folder Include="Configuration\Enums\" />
     <Folder Include="Configuration\ViewModels\" />
     <Folder Include="FieldMapping\Entities\" />
@@ -95,6 +96,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Caerus.Common.Data\Caerus.Common.Data.csproj">
+      <Project>{c1935f08-fbce-49d9-a5ca-df72865c87ae}</Project>
+      <Name>Caerus.Common.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Caerus.Common\Caerus.Common.csproj">
       <Project>{37386a98-4a7f-4197-965b-fc9eba8166c7}</Project>
       <Name>Caerus.Common</Name>

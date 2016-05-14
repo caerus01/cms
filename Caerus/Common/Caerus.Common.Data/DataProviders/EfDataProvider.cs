@@ -9,6 +9,7 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Caching;
 using System.Threading;
@@ -190,16 +191,18 @@ namespace Caerus.Common.Data.DataProviders
         {
             if (ContainsProperty<DateTime>("DateModified", myObject))
                 myObject.GetType().GetProperty("DateModified").SetValue(myObject, DateTime.Now, null);
-            if (ContainsProperty<DateTime>("UserModified", myObject) && _currentUser != null)
-                myObject.GetType().GetProperty("UserModified").SetValue(myObject, _currentUser.RefId, null);
+            if (_currentUser != null)
+                if (ContainsProperty<DateTime>("UserModified", myObject) && _currentUser != null)
+                    myObject.GetType().GetProperty("UserModified").SetValue(myObject, _currentUser.RefId, null);
         }
 
         private void WriteCreated(object myObject)
         {
             if (ContainsProperty<DateTime>("DateCreated", myObject))
                 myObject.GetType().GetProperty("DateCreated").SetValue(myObject, DateTime.Now, null);
-            if (ContainsProperty<DateTime>("UserCreated", myObject) && _currentUser != null)
-                myObject.GetType().GetProperty("UserCreated").SetValue(myObject, _currentUser.RefId, null);
+            if (_currentUser != null)
+                if (ContainsProperty<DateTime>("UserCreated", myObject) && _currentUser != null)
+                    myObject.GetType().GetProperty("UserCreated").SetValue(myObject, _currentUser.RefId, null);
         }
 
         private void WriteId(object myObject)
@@ -237,7 +240,7 @@ namespace Caerus.Common.Data.DataProviders
                 }
                 catch (Exception ex)
                 {
-                    Exception myex = new Exception("Error on auditing an update \n" + ex.Message, ex.InnerException);
+                    Debug.Assert(true, ex.Message);
                     break; //End audit attempt
                 }
             }
@@ -252,7 +255,7 @@ namespace Caerus.Common.Data.DataProviders
                 }
                 catch (Exception ex)
                 {
-                    Exception myex = new Exception("Error on auditing an insert \n" + ex.Message, ex.InnerException);
+                    Debug.Assert(true, ex.Message);
                     break; //End audit attempt
                 }
             }
@@ -265,7 +268,7 @@ namespace Caerus.Common.Data.DataProviders
                 }
                 catch (Exception ex)
                 {
-                    Exception myex = new Exception("Error on auditing a delete \n" + ex.Message, ex.InnerException);
+                    Debug.Assert(true, ex.Message);
                     break; //End audit attempt
                 }
             }

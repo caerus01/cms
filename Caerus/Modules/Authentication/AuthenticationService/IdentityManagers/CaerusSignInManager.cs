@@ -4,7 +4,6 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using AuthenticationService.IdentityUserManager;
 using Caerus.Common.Modules.Authentication.Entities;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -17,13 +16,6 @@ namespace AuthenticationService.IdentityManagers
        public CaerusSignInManager(CaerusUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
-        }
-
-       public override Task<ClaimsIdentity> CreateUserIdentityAsync(CaerusUser user)
-        {
-           return new Task<ClaimsIdentity>(() => null);
-           //TODO: Implement User Claims Generation
-           ///return user.GenerateUserIdentityAsync((CaerusUserManager)UserManager);
         }
 
        public static CaerusSignInManager Create(IdentityFactoryOptions<CaerusSignInManager> options, IOwinContext context)

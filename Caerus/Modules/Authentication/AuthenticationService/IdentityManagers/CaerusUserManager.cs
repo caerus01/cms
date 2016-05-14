@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AuthenticationService.Repository;
+using AuthenticationService.Repository.Context;
 using Caerus.Common.Modules.Authentication.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-namespace AuthenticationService.IdentityUserManager
+namespace AuthenticationService.IdentityManagers
 {
     public class CaerusUserManager : UserManager<CaerusUser>
     {
@@ -33,7 +29,7 @@ namespace AuthenticationService.IdentityUserManager
 
         public static CaerusUserManager Create(IdentityFactoryOptions<CaerusUserManager> options, IOwinContext context)
         {
-            var manager = new CaerusUserManager(new UserStore<CaerusUser>(context.Get<CaerusContext>()));
+            var manager = new CaerusUserManager(new UserStore<CaerusUser>(context.Get<CaerusIdentityContext>()));
 
             manager.UserValidator = new UserValidator<CaerusUser>(manager)
             {

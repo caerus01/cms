@@ -5,9 +5,9 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AuthenticationService.IdentityManagers;
-using AuthenticationService.IdentityUserManager;
 using AuthenticationService.Providers;
 using AuthenticationService.Repository;
+using AuthenticationService.Repository.Context;
 using Caerus.Common.Modules.Authentication.Entities;
 using Caerus.Common.Modules.Authentication.Interfaces;
 using Caerus.Common.Modules.Session.Interfaces;
@@ -34,7 +34,7 @@ namespace AuthenticationService
 
         public void ConfigureAuth(IAppBuilder app)
         {
-            app.CreatePerOwinContext(CaerusContext.Create);
+            app.CreatePerOwinContext(CaerusIdentityContext.Create);
             app.CreatePerOwinContext<CaerusUserManager>(CaerusUserManager.Create);
             app.CreatePerOwinContext<CaerusSignInManager>(CaerusSignInManager.Create);
 

@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="DataProviders\EfDataProvider.cs" />
     <Compile Include="Interfaces\IDataProvider.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
