@@ -39,7 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ModuleTypes.cs" />
     <Compile Include="Enums\ReplyStatus.cs" />
+    <Compile Include="Interfaces\ICaerusLogger.cs" />
+    <Compile Include="Interfaces\ICaerusUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ReplyObject.cs" />
   </ItemGroup>
