@@ -73,9 +73,4 @@
     <Build Include="Tables\ModuleConfigurations.sql" />
     <Build Include="Tables\ModuleSettings.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Release\dummy.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>
