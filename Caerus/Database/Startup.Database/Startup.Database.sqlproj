@@ -74,6 +74,8 @@
     <Build Include="Tables\ModuleSettings.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Release\release-date-script.sql" />
+    <None Include="Release\release-date-script.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
