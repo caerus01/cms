@@ -70,13 +70,14 @@
     <Folder Include="Audit\Tables" />
     <Folder Include="Notification" />
     <Folder Include="Document" />
+    <Folder Include="Utils" />
+    <Folder Include="Utils\ScalarFunctions" />
+    <Folder Include="Utils\StoredProcedures" />
+    <Folder Include="Utils\Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Configuration\ScalarFunctions\CamelCase.sql" />
     <Build Include="Configuration\ScalarFunctions\GetModuleSetting.sql" />
-    <Build Include="Configuration\ScalarFunctions\IsLeapYear.sql" />
     <Build Include="Configuration\ScalarFunctions\IsModuleInUse.sql" />
-    <Build Include="Configuration\StoreProcedures\GetTableValuesByKey.sql" />
     <Build Include="Configuration\StoreProcedures\SetModuleSetting.sql" />
     <Build Include="Configuration\Tables\ModuleConfigurations.sql" />
     <Build Include="Configuration\Tables\ModuleSettings.sql" />
@@ -87,5 +88,11 @@
     <Build Include="Authentication\Tables\AspNetUserClaims.sql" />
     <Build Include="Authentication\Tables\AspNetRoles.sql" />
     <Build Include="Audit\Tables\HttpRequestLogs.sql" />
+    <Build Include="Utils\StoredProcedures\GetTableValuesByKey.sql" />
+    <Build Include="Utils\ScalarFunctions\CamelCase.sql" />
+    <Build Include="Utils\StoredProcedures\ScanMissingIndexes.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Utils\ScalarFunctions\IsLeapYear.sql" />
   </ItemGroup>
 </Project>
