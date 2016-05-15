@@ -66,6 +66,8 @@
     <Folder Include="Logging" />
     <Folder Include="Logging\Tables" />
     <Folder Include="Authentication\Tables" />
+    <Folder Include="Audit" />
+    <Folder Include="Audit\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Configuration\ScalarFunctions\CamelCase.sql" />
@@ -76,11 +78,12 @@
     <Build Include="Configuration\StoreProcedures\SetModuleSetting.sql" />
     <Build Include="Configuration\Tables\ModuleConfigurations.sql" />
     <Build Include="Configuration\Tables\ModuleSettings.sql" />
-    <Build Include="Logging\Tables\CaerusLog.sql" />
+    <Build Include="Logging\Tables\CaerusLogs.sql" />
     <Build Include="Authentication\Tables\AspNetUsers.sql" />
     <Build Include="Authentication\Tables\AspNetUserRoles.sql" />
     <Build Include="Authentication\Tables\AspNetUserLogins.sql" />
     <Build Include="Authentication\Tables\AspNetUserClaims.sql" />
     <Build Include="Authentication\Tables\AspNetRoles.sql" />
+    <Build Include="Audit\Tables\HttpRequestLogs.sql" />
   </ItemGroup>
 </Project>
