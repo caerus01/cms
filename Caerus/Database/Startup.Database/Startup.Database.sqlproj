@@ -74,6 +74,9 @@
     <Folder Include="Utils\ScalarFunctions" />
     <Folder Include="Utils\StoredProcedures" />
     <Folder Include="Utils\Tables" />
+    <Folder Include="Address" />
+    <Folder Include="Address\Tables" />
+    <Folder Include="Address\Seed" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Configuration\ScalarFunctions\GetModuleSetting.sql" />
@@ -95,8 +98,16 @@
     <Build Include="Utils\StoredProcedures\SearchProcedures.sql" />
     <Build Include="Utils\StoredProcedures\GetAllTables.sql" />
     <Build Include="Utils\StoredProcedures\GetAllProcedures.sql" />
+    <Build Include="Address\Tables\Addresses.sql" />
+    <Build Include="Address\Tables\Provinces.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Utils\ScalarFunctions\IsLeapYear.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Startup.Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Address\Seed\pop_Provinces.sql" />
   </ItemGroup>
 </Project>
