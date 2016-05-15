@@ -9,8 +9,7 @@ namespace SampleSite
     {
         public void Configuration(IAppBuilder app)
         {
-            var session = new CaerusSession();
-            session.AuthenticationService.ConfigureAuth(app);
+         
         }
     }
 }

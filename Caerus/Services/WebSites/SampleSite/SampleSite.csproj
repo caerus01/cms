@@ -260,6 +260,10 @@
       <Project>{be43721b-ee7e-4d5e-a416-b2a696b5aee4}</Project>
       <Name>Caerus.Common.Modules</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Caerus.Common.Web\Caerus.Common.Web.csproj">
+      <Project>{C561B4A2-931E-4E30-A72C-D05682A21D18}</Project>
+      <Name>Caerus.Common.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Caerus.Common\Caerus.Common.csproj">
       <Project>{37386a98-4a7f-4197-965b-fc9eba8166c7}</Project>
       <Name>Caerus.Common</Name>
