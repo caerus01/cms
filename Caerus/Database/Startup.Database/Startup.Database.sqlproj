@@ -68,6 +68,8 @@
     <Folder Include="Authentication\Tables" />
     <Folder Include="Audit" />
     <Folder Include="Audit\Tables" />
+    <Folder Include="Notification" />
+    <Folder Include="Document" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Configuration\ScalarFunctions\CamelCase.sql" />
