@@ -76,11 +76,12 @@
     <Compile Include="MVC\Attributes\CaerusAuthorize.cs" />
     <Compile Include="MVC\Controllers\ControllerLessController.cs" />
     <Compile Include="MVC\Filters\HttpRequestLogFilter.cs" />
-    <Compile Include="MVC\HtmlExtensions\MenuExtensions.cs" />
+    <Compile Include="MVC\HtmlExtensions\Bootstrap\MenuExtensions.cs" />
     <Compile Include="MVC\Sitemap\BootstrapSitemapBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="MVC\HtmlExtensions\Angular\" />
     <Folder Include="WebApi\Attributes\" />
     <Folder Include="WebApi\Filters\" />
   </ItemGroup>
@@ -91,6 +92,10 @@
     <ProjectReference Include="..\..\Modules\Audit\Caerus.Modules.Audit.Service\Caerus.Modules.Audit.Service.csproj">
       <Project>{303A9747-6325-4866-BD40-0EA6B8D2FD93}</Project>
       <Name>Caerus.Modules.Audit.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Caerus.Common.Data\Caerus.Common.Data.csproj">
+      <Project>{c1935f08-fbce-49d9-a5ca-df72865c87ae}</Project>
+      <Name>Caerus.Common.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Caerus.Common.Logging\Caerus.Common.Logging.csproj">
       <Project>{CA928BD2-B124-4DB4-95F9-6FAE529E320F}</Project>

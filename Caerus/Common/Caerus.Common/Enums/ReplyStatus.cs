@@ -10,11 +10,14 @@ namespace Caerus.Common.Enums
     {
         Success = 0,
         Warning = 1,
-        Error = 2,
-        Fatal = 3
+        Unauthorised = 2,
+        Error = 3,
+        Fatal = 4,
     }
 
-    public enum ReplySubStatus {
+    public enum ReplySubStatus
+    {
         None = 0
+
     }
 }

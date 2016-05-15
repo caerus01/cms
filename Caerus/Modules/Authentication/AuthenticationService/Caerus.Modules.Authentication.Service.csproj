@@ -165,6 +165,10 @@
       <Project>{be43721b-ee7e-4d5e-a416-b2a696b5aee4}</Project>
       <Name>Caerus.Common.Modules</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Caerus.Common.Stub\Caerus.Common.Stub.csproj">
+      <Project>{60334971-B7AC-469E-A0EA-FFE4E3812EFC}</Project>
+      <Name>Caerus.Common.Stub</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Caerus.Common.Tools\Caerus.Common.Tools.csproj">
       <Project>{d71dddc9-decd-4a08-a3aa-9c3c2ba06109}</Project>
       <Name>Caerus.Common.Tools</Name>

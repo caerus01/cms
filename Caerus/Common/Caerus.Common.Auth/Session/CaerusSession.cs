@@ -14,25 +14,36 @@ using Caerus.Common.Modules.FieldMapping.Interfaces;
 using Caerus.Common.Modules.Notification.Interfaces;
 using Caerus.Common.Modules.Session;
 using Caerus.Common.Modules.Session.Interfaces;
+using Caerus.Modules.Authentication.Service;
+using Caerus.Modules.Configuration.Service;
 
 namespace Caerus.Common.Auth.Session
 {
 
     public class CaerusSession : ICaerusSession {
 
-        private long _currentUser;
+        private string _currentUser;
         private string _emailAddress;
         private string _cellNumber;
         private bool _isAuthenticated;
-        
+
+        private IAuthenticationService _startUpAuth;
+        private IConfigurationService _startUpConfig;
+
         public CaerusSession()
         {
-
+            InitSession();
         }
 
         public CaerusSession(string userName)
         {
+            InitSession(userName);
+        }
 
+        private void InitSession(string userName = "")
+        {
+            _startUpAuth = new AuthenticationService();
+            _startUpConfig = new ConfigurationService();
         }
 
         #region Properties
@@ -40,7 +51,7 @@ namespace Caerus.Common.Auth.Session
         {
             get { return _isAuthenticated; }
         }
-        public long CurrentUserRef
+        public string CurrentUserRef
         {
             get { return _currentUser; }
         }
@@ -61,14 +72,14 @@ namespace Caerus.Common.Auth.Session
         {
             get
             {
-                return _authenticationService ?? (_authenticationService = CaerusSessionInjectorService.GetService<IAuthenticationService>(this, ModuleTypes.Authentication));
+                return _authenticationService ?? (_authenticationService = CaerusSessionInjectorService.GetService<IAuthenticationService>(this, ModuleTypes.Authentication, IsAuthenticated));
             }
             set { _authenticationService = value; }
         }
         private IConfigurationService _configurationService;
         public IConfigurationService ConfigurationService
         {
-            get { return _configurationService ?? (_configurationService = CaerusSessionInjectorService.GetService<IConfigurationService>(this, ModuleTypes.Configuration)); }
+            get { return _configurationService ?? (_configurationService = CaerusSessionInjectorService.GetService<IConfigurationService>(this, ModuleTypes.Configuration, IsAuthenticated)); }
             set { _configurationService = value; }
         }
         public IClientService ClientService { get; set; }

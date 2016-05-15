@@ -10,7 +10,7 @@ namespace Caerus.Common.Modules.Session.Interfaces
     public interface ICaerusSession
     {
         bool IsAuthenticated { get; }
-        long CurrentUserRef { get; }
+        string CurrentUserRef { get; }
         string Email { get; }
         string CellNumber { get; }
         IAuthenticationService AuthenticationService { get; set; }

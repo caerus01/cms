@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Caerus.Common.Modules.Authentication.Entities;
 using Caerus.Common.Modules.Authentication.Interfaces;
 using Caerus.Common.Modules.Session.Interfaces;
+using Caerus.Common.Stub;
+using Caerus.Common.Stub.Sessions;
 using Caerus.Common.ViewModels;
 using Caerus.Modules.Authentication.Service.IdentityManagers;
 using Caerus.Modules.Authentication.Service.Providers;
@@ -22,16 +24,15 @@ namespace Caerus.Modules.Authentication.Service
         private readonly ICaerusSession _session;
         private readonly IAuthenticationRepository _repository;
 
-        private IOwinContext _context;
         internal int validateInterval = 30;
         internal int externalExpireTime = 5;
         internal string loginPath = "";
-        public AuthenticationService(ICaerusSession session, IAuthenticationRepository repository = null, IOwinContext context = null)
+        public AuthenticationService(ICaerusSession session = null, IAuthenticationRepository repository = null)
         {
-            _session = session;
+            _session = session ?? new StubCaerusSession();
             _repository = repository ?? new AuthenticationRepository();
-            _context = context;
         }
+       
 
         public void ConfigureAuth(IAppBuilder app)
         {

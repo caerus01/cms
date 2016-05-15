@@ -193,8 +193,8 @@ namespace Caerus.Common.Data.DataProviders
             if (ContainsProperty<DateTime>("DateModified", myObject))
                 myObject.GetType().GetProperty("DateModified").SetValue(myObject, DateTime.Now, null);
             if (_currentUser != null)
-                if (ContainsProperty<DateTime>("UserModified", myObject) && _currentUser != null)
-                    myObject.GetType().GetProperty("UserModified").SetValue(myObject, _currentUser.RefId, null);
+                if (ContainsProperty<string>("UserModified", myObject) && _currentUser != null)
+                    myObject.GetType().GetProperty("UserModified").SetValue(myObject, _currentUser.Id, null);
         }
 
         private void WriteCreated(object myObject)
@@ -202,8 +202,8 @@ namespace Caerus.Common.Data.DataProviders
             if (ContainsProperty<DateTime>("DateCreated", myObject))
                 myObject.GetType().GetProperty("DateCreated").SetValue(myObject, DateTime.Now, null);
             if (_currentUser != null)
-                if (ContainsProperty<DateTime>("UserCreated", myObject) && _currentUser != null)
-                    myObject.GetType().GetProperty("UserCreated").SetValue(myObject, _currentUser.RefId, null);
+                if (ContainsProperty<string>("UserCreated", myObject) && _currentUser != null)
+                    myObject.GetType().GetProperty("UserCreated").SetValue(myObject, _currentUser.Id, null);
         }
 
         private void WriteId(object myObject)

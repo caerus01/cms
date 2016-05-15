@@ -8,7 +8,7 @@ namespace Caerus.Common.Interfaces
 {
     public interface ICaerusUser
     {
-        long RefId { get; set; }
+        string Id { get; set; }
         string UserName { get; set; }
         string EmailAddress { get; set; }
         string CellNumber { get; set; }

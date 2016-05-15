@@ -7,12 +7,13 @@ using Caerus.Common.Enums;
 using Caerus.Common.Extentions;
 using Caerus.Common.Modules.Session.Interfaces;
 using Caerus.Common.Stub;
+using Caerus.Common.Stub.Services;
 
 namespace Caerus.Common.Auth.DependancyInjector
 {
     public static class CaerusSessionInjectorService
     {
-        public static T GetService<T>(ICaerusSession session, ModuleTypes module)
+        public static T GetService<T>(ICaerusSession session, ModuleTypes module, bool authenticated = true)
         {
             switch (module)
             {

@@ -46,6 +46,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,6 +59,8 @@
     <Compile Include="EncryptionTools.cs" />
     <Compile Include="FileTools.cs" />
     <Compile Include="HttpTools.cs" />
+    <Compile Include="ImageTools.cs" />
+    <Compile Include="NumberTools.cs" />
     <Compile Include="PdfTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlTools.cs" />
