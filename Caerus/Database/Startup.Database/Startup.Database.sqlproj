@@ -91,6 +91,7 @@
     <Build Include="Utils\StoredProcedures\GetTableValuesByKey.sql" />
     <Build Include="Utils\ScalarFunctions\CamelCase.sql" />
     <Build Include="Utils\StoredProcedures\ScanMissingIndexes.sql" />
+    <Build Include="Utils\StoredProcedures\GetNetTableStructure.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Utils\ScalarFunctions\IsLeapYear.sql" />
