@@ -1,12 +1,12 @@
 ﻿using System;
-using Authentication.Service.Repository.Context;
+using Caerus.Authentication.Service.Repository.Context;
 using Caerus.Common.Modules.Authentication.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-namespace Authentication.Service.IdentityManagers
+namespace Caerus.Authentication.Service.IdentityManagers
 {
     public class CaerusUserManager : UserManager<CaerusUser>
     {
@@ -26,6 +26,7 @@ namespace Authentication.Service.IdentityManagers
             : base(store)
         {
         }
+
 
         public static CaerusUserManager Create(IdentityFactoryOptions<CaerusUserManager> options, IOwinContext context)
         {
@@ -58,10 +59,8 @@ namespace Authentication.Service.IdentityManagers
                 manager.UserTokenProvider =
                     new DataProtectorTokenProvider<CaerusUser>(dataProtectionProvider.Create(manager.tokenName));
             }
-
+           
             return manager;
         }
-
-
     }
 }

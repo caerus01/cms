@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Web;
+using System.Web.Mvc;
 using Caerus.Common.Auth.Session;
 using Caerus.Common.Modules.Session.Interfaces;
+using Caerus.Tests.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Owin;
 
@@ -11,9 +14,12 @@ namespace Caerus.Tests.Base
     {
         internal ICaerusSession _session;
         private string baseUser = "";
+        internal MockController controller;
         public BaseTest(string userName = "")
         {
             _session = string.IsNullOrEmpty(userName) ? new CaerusSession() : new CaerusSession(userName);
+            controller = new MockController();
+            
         }
 
         public BaseTest(bool useRealSession)
@@ -26,7 +32,7 @@ namespace Caerus.Tests.Base
             _session = session;
         }
 
-        public void Configuration(IAppBuilder app)
+        public class MockController : Controller
         {
 
         }

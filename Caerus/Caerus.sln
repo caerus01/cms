@@ -23,9 +23,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerus.Common.Tools", "Comm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerus.Common.Web", "Common\Caerus.Common.Web\Caerus.Common.Web.csproj", "{C561B4A2-931E-4E30-A72C-D05682A21D18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.Service", "Modules\Authentication\AuthenticationService\Authentication.Service.csproj", "{87EA423A-09E9-405D-A183-516821CA2835}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerus.Authentication.Service", "Modules\Authentication\AuthenticationService\Caerus.Authentication.Service.csproj", "{87EA423A-09E9-405D-A183-516821CA2835}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration.Service", "Modules\Configuration\ConfigurationService\Configuration.Service.csproj", "{2D0E1FE1-0E59-41EB-ABE8-A4742551B44F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerus.Configuration.Service", "Modules\Configuration\ConfigurationService\Caerus.Configuration.Service.csproj", "{2D0E1FE1-0E59-41EB-ABE8-A4742551B44F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerus.Tests", "Tests\Caerus.Tests\Caerus.Tests.csproj", "{735E900E-CDA0-472C-8C95-C758C5FC5172}"
 EndProject

@@ -1,20 +1,29 @@
-﻿using Authentication.Service.Repository.Context;
+﻿using Caerus.Authentication.Service.Repository.Context;
+using Caerus.Common.Modules.Authentication.Entities;
 using Caerus.Common.Modules.Authentication.Interfaces;
+using Caerus.Common.Modules.Session.Interfaces;
 
-namespace Authentication.Service.Repository
+namespace Caerus.Authentication.Service.Repository
 {
     public class AuthenticationRepository : IAuthenticationRepository
     {
-
         private CaerusIdentityContext _identityContext;
-        public CaerusIdentityContext GetIdentityContext()
+
+
+        public AuthenticationRepository(ICaerusSession _session) 
         {
-            return _identityContext ?? (_identityContext = CaerusIdentityContext.Create());
+            _identityContext = CaerusIdentityContext.Create();
         }
 
         public int SaveChanges()
         {
             return 0;
+        }
+
+        public void CreateUser(CaerusUser user)
+        {
+            _identityContext.Users.Add(user);
+            _identityContext.SaveChanges();
         }
     }
 }
