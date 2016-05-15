@@ -7,8 +7,8 @@
     <ProjectGuid>{BA811D7E-369D-4F18-A653-E28AD9F3A132}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Caerus.Modules.Address.Service</RootNamespace>
-    <AssemblyName>Caerus.Modules.Address.Service</AssemblyName>
+    <RootNamespace>Caerus.Modules.Contact.Service</RootNamespace>
+    <AssemblyName>Caerus.Modules.Contact.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
@@ -52,10 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressService.cs" />
+    <Compile Include="ContactService.cs" />
     <Compile Include="Facade\GeoCodingFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\AddressRepository.cs" />
+    <Compile Include="Repository\ContactRepository.cs" />
     <Compile Include="Repository\Context\CaerusContext.cs" />
   </ItemGroup>
   <ItemGroup>

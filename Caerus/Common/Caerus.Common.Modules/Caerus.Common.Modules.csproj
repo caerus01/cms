@@ -61,11 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address\Enums\AddressOwningTypes.cs" />
-    <Compile Include="Address\Interfaces\IAddressRepository.cs" />
-    <Compile Include="Address\Interfaces\IAddressService.cs" />
-    <Compile Include="Address\ValueObjects\GeocodeResponse.cs" />
-    <Compile Include="Address\ViewModels\AddressViewModel.cs" />
+    <Compile Include="Contact\Enums\AddressOwningTypes.cs" />
+    <Compile Include="Contact\Interfaces\IContactRepository.cs" />
+    <Compile Include="Contact\Interfaces\IContactService.cs" />
+    <Compile Include="Contact\ValueObjects\GeocodeResponse.cs" />
+    <Compile Include="Contact\ViewModels\AddressViewModel.cs" />
     <Compile Include="Audit\Entities\HttpRequestLog.cs" />
     <Compile Include="Audit\Interfaces\IAuditRepository.cs" />
     <Compile Include="Audit\Interfaces\IAuditService.cs" />
@@ -95,11 +95,14 @@
     <Compile Include="Session\Interfaces\ICaerusSession.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Address\Entities\" />
+    <Folder Include="Accounting\" />
+    <Folder Include="BankAccount\" />
     <Folder Include="Client\Entities\" />
     <Folder Include="Client\ViewModels\" />
     <Folder Include="Configuration\Enums\" />
     <Folder Include="Configuration\ViewModels\" />
+    <Folder Include="Contact\Entities\" />
+    <Folder Include="Document\" />
     <Folder Include="FieldMapping\Entities\" />
     <Folder Include="FieldMapping\Enums\" />
     <Folder Include="Notification\Entities\" />

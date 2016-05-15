@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Caerus.Common.Modules.Address.Enums;
+using Caerus.Common.Modules.Contact.Enums;
 using Caerus.Common.ViewModels;
 
 namespace Caerus.Common.Modules.Address.ViewModels
 {
    public class AddressViewModel : ReplyObject
    {
-       public Guid OwningRefId { get; set; }
+       public long OwningRefId { get; set; }
        public string AddressLine { get; set; }
        public string Suburb { get; set; }
        public string City { get; set; }
@@ -21,6 +21,6 @@ namespace Caerus.Common.Modules.Address.ViewModels
        public long ProvinceId { get; set; }
        public string ProvinceName { get; set; }
        public bool IsPrimary { get; set; }
-       public AddressOwningTypes OwningType { get; set; }
+       public AddressTypes AddresType { get; set; }
     }
 }

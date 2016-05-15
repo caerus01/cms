@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Caerus.Common.Enums;
 using Caerus.Common.Extentions;
 using Caerus.Common.Modules.Address.ValueObjects;
 using Caerus.Common.Modules.Address.ViewModels;
 using Caerus.Common.Modules.Session.Interfaces;
-using Caerus.Common.ViewModels;
 
-namespace Caerus.Modules.Address.Service.Facade
+namespace Caerus.Modules.Contact.Service.Facade
 {
     public class GeoCodingFacade
     {
@@ -96,7 +92,7 @@ namespace Caerus.Modules.Address.Service.Facade
             }
             catch (Exception ex)
             {
-                var exResult = _session.Logger.WrapException(ex, new dynamic[] { address.OwningRefId, address.OwningType });
+                var exResult = _session.Logger.WrapException(ex, new dynamic[] { address.OwningRefId, address.AddresType });
                 exResult.CopyProperties(address);
             }
             return address;
