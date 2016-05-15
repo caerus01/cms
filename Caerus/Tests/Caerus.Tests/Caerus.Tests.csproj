@@ -191,13 +191,13 @@
       <Project>{37386a98-4a7f-4197-965b-fc9eba8166c7}</Project>
       <Name>Caerus.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Modules\Authentication\AuthenticationService\Caerus.Authentication.Service.csproj">
+    <ProjectReference Include="..\..\Modules\Authentication\AuthenticationService\Caerus.Modules.Authentication.Service.csproj">
       <Project>{87ea423a-09e9-405d-a183-516821ca2835}</Project>
-      <Name>Caerus.Authentication.Service</Name>
+      <Name>Caerus.Modules.Authentication.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Modules\Configuration\ConfigurationService\Caerus.Configuration.Service.csproj">
+    <ProjectReference Include="..\..\Modules\Configuration\ConfigurationService\Caerus.Modules.Configuration.Service.csproj">
       <Project>{2d0e1fe1-0e59-41eb-abe8-a4742551b44f}</Project>
-      <Name>Caerus.Configuration.Service</Name>
+      <Name>Caerus.Modules.Configuration.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

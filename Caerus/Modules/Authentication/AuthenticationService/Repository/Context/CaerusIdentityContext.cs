@@ -1,7 +1,7 @@
 ﻿using Caerus.Common.Modules.Authentication.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace Caerus.Authentication.Service.Repository.Context
+namespace Caerus.Modules.Authentication.Service.Repository.Context
 {
     public class CaerusIdentityContext : IdentityDbContext<CaerusUser>
     {

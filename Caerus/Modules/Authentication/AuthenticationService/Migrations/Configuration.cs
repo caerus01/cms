@@ -1,18 +1,16 @@
-namespace Caerus.Authentication.Service.Migrations
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+using System.Data.Entity.Migrations;
+using Caerus.Modules.Authentication.Service.Repository.Context;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Caerus.Authentication.Service.Repository.Context.CaerusIdentityContext>
+namespace Caerus.Modules.Authentication.Service.Migrations
+{
+    internal sealed class Configuration : DbMigrationsConfiguration<CaerusIdentityContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Caerus.Authentication.Service.Repository.Context.CaerusIdentityContext context)
+        protected override void Seed(CaerusIdentityContext context)
         {
             //  This method will be called after migrating to the latest version.
 

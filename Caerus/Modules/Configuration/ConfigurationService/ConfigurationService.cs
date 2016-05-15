@@ -1,4 +1,4 @@
-﻿namespace Caerus.Configuration.Service
+﻿namespace Caerus.Modules.Configuration.Service
 {
     public class ConfigurationService
     {

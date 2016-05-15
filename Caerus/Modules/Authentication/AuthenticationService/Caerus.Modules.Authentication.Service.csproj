@@ -7,8 +7,8 @@
     <ProjectGuid>{87EA423A-09E9-405D-A183-516821CA2835}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Caerus.Authentication.Service</RootNamespace>
-    <AssemblyName>Caerus.Authentication.Service</AssemblyName>
+    <RootNamespace>Caerus.Modules.Authentication.Service</RootNamespace>
+    <AssemblyName>Caerus.Modules.Authentication.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

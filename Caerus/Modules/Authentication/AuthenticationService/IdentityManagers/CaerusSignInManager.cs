@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 
-namespace Caerus.Authentication.Service.IdentityManagers
+namespace Caerus.Modules.Authentication.Service.IdentityManagers
 {
     public class CaerusSignInManager : SignInManager<CaerusUser, string>
     {

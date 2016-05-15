@@ -1,9 +1,9 @@
-﻿using Caerus.Authentication.Service.Repository.Context;
-using Caerus.Common.Modules.Authentication.Entities;
+﻿using Caerus.Common.Modules.Authentication.Entities;
 using Caerus.Common.Modules.Authentication.Interfaces;
 using Caerus.Common.Modules.Session.Interfaces;
+using Caerus.Modules.Authentication.Service.Repository.Context;
 
-namespace Caerus.Authentication.Service.Repository
+namespace Caerus.Modules.Authentication.Service.Repository
 {
     public class AuthenticationRepository : IAuthenticationRepository
     {

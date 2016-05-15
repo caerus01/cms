@@ -1,25 +1,21 @@
 ﻿using System;
-using System.Data.Entity.Core;
-using System.Data.Entity.Validation;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Caerus.Authentication.Service.IdentityManagers;
-using Caerus.Authentication.Service.Providers;
-using Caerus.Authentication.Service.Repository;
-using Caerus.Authentication.Service.Repository.Context;
-using Caerus.Common.Enums;
 using Caerus.Common.Modules.Authentication.Entities;
 using Caerus.Common.Modules.Authentication.Interfaces;
 using Caerus.Common.Modules.Session.Interfaces;
 using Caerus.Common.ViewModels;
+using Caerus.Modules.Authentication.Service.IdentityManagers;
+using Caerus.Modules.Authentication.Service.Providers;
+using Caerus.Modules.Authentication.Service.Repository;
+using Caerus.Modules.Authentication.Service.Repository.Context;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 
-namespace Caerus.Authentication.Service
+namespace Caerus.Modules.Authentication.Service
 {
     public class AuthenticationService : IAuthenticationService
     {

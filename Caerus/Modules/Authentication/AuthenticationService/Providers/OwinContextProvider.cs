@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Remoting.Messaging;
 using Microsoft.Owin;
 
-namespace Caerus.Authentication.Service.Providers
+namespace Caerus.Modules.Authentication.Service.Providers
 {
     public interface IOwinContextProvider
     {

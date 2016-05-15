@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Owin.Security.Cookies;
 
-namespace Caerus.Authentication.Service.Providers
+namespace Caerus.Modules.Authentication.Service.Providers
 {
     public class CaerausCookieAuthenticationProvider : CookieAuthenticationProvider
     {
