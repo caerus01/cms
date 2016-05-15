@@ -106,6 +106,7 @@
     <Folder Include="FieldMapping\Entities\" />
     <Folder Include="FieldMapping\Enums\" />
     <Folder Include="Notification\Entities\" />
+    <Folder Include="Products\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

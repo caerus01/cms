@@ -6,7 +6,7 @@
     [City]         VARCHAR (500)    NULL,
     [ProvinceRefId]   BIGINT              NULL,
     [IsPrimary]    BIT              CONSTRAINT [DF_Address_IsPrimary] DEFAULT ((0)) NOT NULL,
-    [OwningRefId]  UNIQUEIDENTIFIER NOT NULL,
+    [OwningRefId]  BIGINT NOT NULL,
     [OwningType]   INT              NOT NULL,
     [CountryRefId]      bigint              CONSTRAINT [DF_Address_Country] DEFAULT ((0)) NULL,
     [Zip]          VARCHAR (50)     NULL,
