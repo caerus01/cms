@@ -10,7 +10,7 @@ namespace Caerus.Modules.Authentication.Service.Repository
         private CaerusIdentityContext _identityContext;
 
 
-        public AuthenticationRepository(ICaerusSession _session) 
+        public AuthenticationRepository() 
         {
             _identityContext = CaerusIdentityContext.Create();
         }

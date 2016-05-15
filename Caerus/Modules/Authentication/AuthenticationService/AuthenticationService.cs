@@ -29,7 +29,7 @@ namespace Caerus.Modules.Authentication.Service
         public AuthenticationService(ICaerusSession session, IAuthenticationRepository repository = null, IOwinContext context = null)
         {
             _session = session;
-            _repository = repository ?? new AuthenticationRepository(session);
+            _repository = repository ?? new AuthenticationRepository();
             _context = context;
         }
 

@@ -65,7 +65,10 @@
     <Compile Include="Audit\Interfaces\IAuditRepository.cs" />
     <Compile Include="Audit\Interfaces\IAuditService.cs" />
     <Compile Include="Audit\ViewModels\AuditRequestViewModel.cs" />
+    <Compile Include="Authentication\Entities\CaerusClaim.cs" />
+    <Compile Include="Authentication\Entities\CaerusRole.cs" />
     <Compile Include="Authentication\Entities\CaerusUser.cs" />
+    <Compile Include="Authentication\Entities\CaerusUserRole.cs" />
     <Compile Include="Authentication\Enums\UserTypes.cs" />
     <Compile Include="Authentication\Interfaces\IAuthenticationRepository.cs" />
     <Compile Include="Authentication\Interfaces\IAuthenticationService.cs" />
