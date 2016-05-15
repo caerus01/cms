@@ -93,6 +93,8 @@
     <Build Include="Utils\StoredProcedures\ScanMissingIndexes.sql" />
     <Build Include="Utils\StoredProcedures\GetNetTableStructure.sql" />
     <Build Include="Utils\StoredProcedures\SearchProcedures.sql" />
+    <Build Include="Utils\StoredProcedures\GetAllTables.sql" />
+    <Build Include="Utils\StoredProcedures\GetAllProcedures.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Utils\ScalarFunctions\IsLeapYear.sql" />
