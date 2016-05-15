@@ -8,9 +8,10 @@ namespace Caerus.Common.Modules.Authentication.Enums
 {
     public enum UserTypes
     {
-        ContentManager = 0,
+        Anonymous = 0,
         Internal = 1,
         Client = 2,
-        Api = 3
+        Api = 3,
+        ContentManager = 4
     }
 }

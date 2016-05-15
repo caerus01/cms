@@ -37,13 +37,10 @@ namespace Caerus.Tests.ServiceTests
                 Email = "test2@test.com",
                 UserName = "testing2",
                 PhoneNumber = "0123311277",
-                UserType = UserTypes.Api
+                UserType = UserTypes.Api,
+                PasswordHash = "123"
             });
         }
 
-        public void Configuration(IAppBuilder app)
-        {
-            _session.AuthenticationService.ConfigureAuth(app);
-        }
     }
 }

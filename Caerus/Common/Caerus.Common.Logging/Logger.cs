@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Caerus.Common.Enums;
 using Caerus.Common.Interfaces;
 using Caerus.Common.Logging.Interfaces;
+using Caerus.Common.ViewModels;
 
 namespace Caerus.Common.Logging
 {
@@ -155,7 +158,11 @@ namespace Caerus.Common.Logging
         {
             var body = new LoggingBody { Exception = ex };
             var frame = new StackTrace().GetFrame(2);
-            body.LoggerMethod = frame.GetMethod().Name;
+            var method = frame.GetMethod().Name;
+            if (method == "WrapException")
+                frame = new StackTrace().GetFrame(3);
+            method = frame.GetMethod().Name;
+            body.LoggerMethod = method;
 
             var v = frame.GetMethod().DeclaringType;
             string assembly = "";
@@ -199,6 +206,26 @@ namespace Caerus.Common.Logging
             public string Message { get; set; }
 
             public Exception Exception { get; set; }
+        }
+
+        public ReplyObject WrapException(Exception ex, dynamic[] props = null, ReplyStatus replyStatus = ReplyStatus.Fatal)
+        {
+            var result = new ReplyObject() { ReplyStatus = replyStatus };
+            var frame = new StackTrace().GetFrame(2);
+            LogFatal(frame.GetMethod().Name, ex, props);
+            result.ReplyMessage = string.Format("Exception was caught in {0}", frame.GetMethod().Name);
+            var et = ex as DbEntityValidationException;
+            if (et != null && et.EntityValidationErrors != null)
+            {
+                foreach (var item in et.EntityValidationErrors)
+                {
+                    foreach (var valerror in item.ValidationErrors)
+                    {
+                        result.Errors.Add(string.Format("{0}", valerror.ErrorMessage));
+                    }
+                }
+            }
+            return result;
         }
 
     }

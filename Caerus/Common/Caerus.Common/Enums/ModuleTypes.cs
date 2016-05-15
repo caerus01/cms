@@ -12,6 +12,7 @@ namespace Caerus.Common.Enums
         Authentication = 1,
         Notification = 2,
         Client = 3,
+        Audit = 4
 
     }
 }

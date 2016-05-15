@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Data.Entity.Core;
+using System.Data.Entity.Validation;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Caerus.Authentication.Service.IdentityManagers;
@@ -22,7 +25,7 @@ namespace Caerus.Authentication.Service
     {
         private readonly ICaerusSession _session;
         private readonly IAuthenticationRepository _repository;
-       
+
         private IOwinContext _context;
         internal int validateInterval = 30;
         internal int externalExpireTime = 5;
@@ -85,9 +88,7 @@ namespace Caerus.Authentication.Service
             }
             catch (Exception ex)
             {
-                _session.Logger.LogFatal(System.Reflection.MethodBase.GetCurrentMethod().Name, ex, null);
-                result.ReplyStatus = ReplyStatus.Fatal;
-                result.ReplyMessage = string.Format("Exception was caught in {0}", System.Reflection.MethodBase.GetCurrentMethod().Name);
+                result = _session.Logger.WrapException(ex);
             }
             return result;
         }

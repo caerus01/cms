@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Caerus.Common.Enums;
+using Caerus.Common.ViewModels;
 
 namespace Caerus.Common.Interfaces
 {
@@ -16,5 +18,6 @@ namespace Caerus.Common.Interfaces
         void LogError(Exception exc, dynamic[] properties = null);
         void LogFatal(string methodName, Exception exception = null, dynamic[] properties = null);
         void LogSystemActivity(string description, long? reference = null, dynamic[] properties = null);
+        ReplyObject WrapException(Exception ex, dynamic[] props = null, ReplyStatus replyStatus = ReplyStatus.Fatal);
     }
 }
