@@ -82,6 +82,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleSite", "Services\WebS
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Products", "Products", "{07EEEFFD-950B-40B7-9374-939DEC97ED23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerus.Modules.FieldMapping.Service", "Modules\FieldMapping\Caerus.Modules.FieldMapping.Service\Caerus.Modules.FieldMapping.Service.csproj", "{9B483E0B-7BD4-42C6-AFA3-575AB3828096}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -150,6 +152,10 @@ Global
 		{B1D3088B-0090-40F6-A62C-C038D05B9818}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1D3088B-0090-40F6-A62C-C038D05B9818}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1D3088B-0090-40F6-A62C-C038D05B9818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B483E0B-7BD4-42C6-AFA3-575AB3828096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B483E0B-7BD4-42C6-AFA3-575AB3828096}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B483E0B-7BD4-42C6-AFA3-575AB3828096}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B483E0B-7BD4-42C6-AFA3-575AB3828096}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -186,5 +192,6 @@ Global
 		{65A7CEE8-7D9A-41D0-871F-31B614C05ACA} = {7FACBFBD-28CC-4010-A2C9-CE6C781721FD}
 		{B1D3088B-0090-40F6-A62C-C038D05B9818} = {BBD47E73-2799-4AE7-B802-459FACFA2CF7}
 		{07EEEFFD-950B-40B7-9374-939DEC97ED23} = {7FACBFBD-28CC-4010-A2C9-CE6C781721FD}
+		{9B483E0B-7BD4-42C6-AFA3-575AB3828096} = {F533D039-414C-4A7D-9D94-8EAF4919B950}
 	EndGlobalSection
 EndGlobal

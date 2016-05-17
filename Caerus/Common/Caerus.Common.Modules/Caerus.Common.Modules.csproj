@@ -61,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client\Enums\GenderTypes.cs" />
+    <Compile Include="Client\Enums\TitleTypes.cs" />
     <Compile Include="Contact\Enums\AddressOwningTypes.cs" />
     <Compile Include="Contact\Interfaces\IContactRepository.cs" />
     <Compile Include="Contact\Interfaces\IContactService.cs" />
@@ -83,7 +85,18 @@
     <Compile Include="Configuration\Entities\ModuleConfiguration.cs" />
     <Compile Include="Configuration\Entities\ModuleSetting.cs" />
     <Compile Include="Configuration\Interfaces\IConfigurationService.cs" />
+    <Compile Include="FieldMapping\Enums\FieldDataTypes.cs" />
+    <Compile Include="FieldMapping\Enums\FieldEntityTypes.cs" />
+    <Compile Include="FieldMapping\Enums\FieldRequirementRanks.cs" />
+    <Compile Include="FieldMapping\Enums\FieldTypes.cs" />
+    <Compile Include="FieldMapping\Enums\FieldValidationTypes.cs" />
+    <Compile Include="FieldMapping\Interfaces\IFieldMappingRepository.cs" />
     <Compile Include="FieldMapping\Interfaces\IFieldMappingService.cs" />
+    <Compile Include="FieldMapping\ViewModels\FieldItemModel.cs" />
+    <Compile Include="FieldMapping\ViewModels\DynamicFieldReplyViewModel.cs" />
+    <Compile Include="FieldMapping\ViewModels\DynamicFieldResponseViewModel.cs" />
+    <Compile Include="FieldMapping\ViewModels\FieldValidationModel.cs" />
+    <Compile Include="Lookup\Enums\LookupTypes.cs" />
     <Compile Include="Notification\Enums\DeliveryTypes.cs" />
     <Compile Include="Notification\Enums\NotificationTypes.cs" />
     <Compile Include="Notification\Interfaces\Providers\IEmailProvider.cs" />
@@ -104,7 +117,6 @@
     <Folder Include="Contact\Entities\" />
     <Folder Include="Document\" />
     <Folder Include="FieldMapping\Entities\" />
-    <Folder Include="FieldMapping\Enums\" />
     <Folder Include="Notification\Entities\" />
     <Folder Include="Products\" />
   </ItemGroup>
