@@ -74,11 +74,13 @@
     <Folder Include="Utils\ScalarFunctions" />
     <Folder Include="Utils\StoredProcedures" />
     <Folder Include="Utils\Tables" />
-    <Folder Include="Contacts" />
-    <Folder Include="Contacts\Tables" />
-    <Folder Include="Contacts\Seed" />
+    <Folder Include="Lookup" />
+    <Folder Include="Lookup\Tables" />
+    <Folder Include="Lookup\Seed" />
     <Folder Include="Client" />
     <Folder Include="Client\Tables" />
+    <Folder Include="FieldMapping" />
+    <Folder Include="FieldMapping\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Configuration\ScalarFunctions\GetModuleSetting.sql" />
@@ -100,11 +102,18 @@
     <Build Include="Utils\StoredProcedures\SearchProcedures.sql" />
     <Build Include="Utils\StoredProcedures\GetAllTables.sql" />
     <Build Include="Utils\StoredProcedures\GetAllProcedures.sql" />
-    <Build Include="Contacts\Tables\Addresses.sql" />
-    <Build Include="Contacts\Tables\Provinces.sql" />
+    <Build Include="Lookup\Tables\Provinces.sql" />
     <Build Include="Client\Tables\Clients.sql" />
-    <Build Include="Client\Tables\Indivuals.sql" />
-    <Build Include="Client\Tables\Businesses.sql" />
+    <Build Include="Client\Tables\ClientIndivuals.sql" />
+    <Build Include="Client\Tables\ClientBusinesses.sql" />
+    <Build Include="FieldMapping\Tables\FieldDisplaySetups.sql" />
+    <Build Include="FieldMapping\Tables\FieldValidations.sql" />
+    <Build Include="Client\Tables\ClientAddressDetails.sql" />
+    <Build Include="Client\Tables\ClientContactDetails.sql" />
+    <Build Include="Client\Tables\ClientBankingDetails.sql" />
+    <Build Include="Client\Tables\ClientEmploymentDetails.sql" />
+    <Build Include="Client\Tables\ClientNextOfKinDetails.sql" />
+    <Build Include="Client\Tables\ClientAffordabilityDetails.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Utils\ScalarFunctions\IsLeapYear.sql" />
@@ -113,6 +122,6 @@
     <RefactorLog Include="Startup.Database.refactorlog" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="Contacts\Seed\pop_Provinces.sql" />
+    <PostDeploy Include="Lookup\Seed\pop_Provinces.sql" />
   </ItemGroup>
 </Project>

@@ -72,9 +72,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerus.Modules.Audit.Servic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{7B8A6399-2215-456A-B7D4-EC83C60A5BAC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contact", "Contact", "{BEFEACBC-39D0-4008-85DC-FECF8F259457}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Geocode", "Geocode", "{BEFEACBC-39D0-4008-85DC-FECF8F259457}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerus.Modules.Contact.Service", "Modules\Address\Caerus.Modules.Address.Service\Caerus.Modules.Contact.Service.csproj", "{BA811D7E-369D-4F18-A653-E28AD9F3A132}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerus.Modules.GeoCode.Service", "Modules\Address\Caerus.Modules.Address.Service\Caerus.Modules.GeoCode.Service.csproj", "{BA811D7E-369D-4F18-A653-E28AD9F3A132}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BankAccount", "BankAccount", "{65A7CEE8-7D9A-41D0-871F-31B614C05ACA}"
 EndProject
@@ -83,6 +83,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Products", "Products", "{07EEEFFD-950B-40B7-9374-939DEC97ED23}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerus.Modules.FieldMapping.Service", "Modules\FieldMapping\Caerus.Modules.FieldMapping.Service\Caerus.Modules.FieldMapping.Service.csproj", "{9B483E0B-7BD4-42C6-AFA3-575AB3828096}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerus.Modules.Client.Service", "Modules\Client\Caerus.Modules.Client.Service\Caerus.Modules.Client.Service.csproj", "{FD7F61F2-4BED-42ED-AAF1-B08B3B62C127}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -156,6 +158,10 @@ Global
 		{9B483E0B-7BD4-42C6-AFA3-575AB3828096}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B483E0B-7BD4-42C6-AFA3-575AB3828096}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B483E0B-7BD4-42C6-AFA3-575AB3828096}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD7F61F2-4BED-42ED-AAF1-B08B3B62C127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7F61F2-4BED-42ED-AAF1-B08B3B62C127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD7F61F2-4BED-42ED-AAF1-B08B3B62C127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7F61F2-4BED-42ED-AAF1-B08B3B62C127}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -193,5 +199,6 @@ Global
 		{B1D3088B-0090-40F6-A62C-C038D05B9818} = {BBD47E73-2799-4AE7-B802-459FACFA2CF7}
 		{07EEEFFD-950B-40B7-9374-939DEC97ED23} = {7FACBFBD-28CC-4010-A2C9-CE6C781721FD}
 		{9B483E0B-7BD4-42C6-AFA3-575AB3828096} = {F533D039-414C-4A7D-9D94-8EAF4919B950}
+		{FD7F61F2-4BED-42ED-AAF1-B08B3B62C127} = {DAAC3E66-EFE2-4070-A352-56C49D4BF8D3}
 	EndGlobalSection
 EndGlobal

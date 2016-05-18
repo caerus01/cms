@@ -61,13 +61,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client\Enums\ClientEntityTypes.cs" />
     <Compile Include="Client\Enums\GenderTypes.cs" />
     <Compile Include="Client\Enums\TitleTypes.cs" />
-    <Compile Include="Contact\Enums\AddressOwningTypes.cs" />
-    <Compile Include="Contact\Interfaces\IContactRepository.cs" />
-    <Compile Include="Contact\Interfaces\IContactService.cs" />
-    <Compile Include="Contact\ValueObjects\GeocodeResponse.cs" />
-    <Compile Include="Contact\ViewModels\AddressViewModel.cs" />
+    <Compile Include="Client\Interfaces\IClientRepository.cs" />
+    <Compile Include="Geocode\Interfaces\IGeocodeService.cs" />
+    <Compile Include="Geocode\ValueObjects\GeocodeResponse.cs" />
+    <Compile Include="Client\ViewModels\AddressViewModel.cs" />
     <Compile Include="Audit\Entities\HttpRequestLog.cs" />
     <Compile Include="Audit\Interfaces\IAuditRepository.cs" />
     <Compile Include="Audit\Interfaces\IAuditService.cs" />
@@ -85,11 +85,16 @@
     <Compile Include="Configuration\Entities\ModuleConfiguration.cs" />
     <Compile Include="Configuration\Entities\ModuleSetting.cs" />
     <Compile Include="Configuration\Interfaces\IConfigurationService.cs" />
+    <Compile Include="FieldMapping\Entities\FieldDisplaySetup.cs" />
+    <Compile Include="FieldMapping\Entities\FieldValidation.cs" />
     <Compile Include="FieldMapping\Enums\FieldDataTypes.cs" />
     <Compile Include="FieldMapping\Enums\FieldEntityTypes.cs" />
+    <Compile Include="FieldMapping\Enums\FieldRanks.cs" />
     <Compile Include="FieldMapping\Enums\FieldRequirementRanks.cs" />
     <Compile Include="FieldMapping\Enums\FieldTypes.cs" />
     <Compile Include="FieldMapping\Enums\FieldValidationTypes.cs" />
+    <Compile Include="FieldMapping\Enums\OwningTypes.cs" />
+    <Compile Include="FieldMapping\Interfaces\IDynamicService.cs" />
     <Compile Include="FieldMapping\Interfaces\IFieldMappingRepository.cs" />
     <Compile Include="FieldMapping\Interfaces\IFieldMappingService.cs" />
     <Compile Include="FieldMapping\ViewModels\FieldItemModel.cs" />
@@ -111,12 +116,15 @@
     <Folder Include="Accounting\" />
     <Folder Include="BankAccount\" />
     <Folder Include="Client\Entities\" />
-    <Folder Include="Client\ViewModels\" />
     <Folder Include="Configuration\Enums\" />
     <Folder Include="Configuration\ViewModels\" />
-    <Folder Include="Contact\Entities\" />
     <Folder Include="Document\" />
-    <Folder Include="FieldMapping\Entities\" />
+    <Folder Include="Geocode\Entities\" />
+    <Folder Include="Geocode\Enums\" />
+    <Folder Include="Geocode\ViewModels\" />
+    <Folder Include="Lookup\Entities\" />
+    <Folder Include="Lookup\Interfaces\" />
+    <Folder Include="Lookup\ViewModels\" />
     <Folder Include="Notification\Entities\" />
     <Folder Include="Products\" />
   </ItemGroup>

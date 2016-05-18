@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Caerus.Common.Modules.FieldMapping.Enums;
 using Caerus.Common.ViewModels;
 
 namespace Caerus.Common.Modules.FieldMapping.ViewModels
@@ -15,7 +16,7 @@ namespace Caerus.Common.Modules.FieldMapping.ViewModels
        }
 
        public List<FieldItemModel> Fields { get; set; }
-       public int OwningEntityType { get; set; }
+       public OwningTypes OwningType { get; set; }
        public long OwningEntityRef { get; set; }
     }
   

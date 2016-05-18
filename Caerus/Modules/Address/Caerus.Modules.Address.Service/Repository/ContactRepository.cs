@@ -1,7 +1,6 @@
-﻿using Caerus.Common.Modules.Contact.Interfaces;
-using Caerus.Modules.Contact.Service.Repository.Context;
+﻿using Caerus.Modules.GeoCode.Service.Repository.Context;
 
-namespace Caerus.Modules.Contact.Service.Repository
+namespace Caerus.Modules.GeoCode.Service.Repository
 {
     public class ContactRepository : IContactRepository
     {

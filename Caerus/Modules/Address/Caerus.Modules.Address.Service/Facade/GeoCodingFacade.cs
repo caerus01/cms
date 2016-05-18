@@ -4,11 +4,11 @@ using System.Net.Http;
 using System.Xml.Serialization;
 using Caerus.Common.Enums;
 using Caerus.Common.Extentions;
-using Caerus.Common.Modules.Address.ValueObjects;
-using Caerus.Common.Modules.Address.ViewModels;
+using Caerus.Common.Modules.Client.ViewModels;
+using Caerus.Common.Modules.Geocode.ValueObjects;
 using Caerus.Common.Modules.Session.Interfaces;
 
-namespace Caerus.Modules.Contact.Service.Facade
+namespace Caerus.Modules.GeoCode.Service.Facade
 {
     public class GeoCodingFacade
     {

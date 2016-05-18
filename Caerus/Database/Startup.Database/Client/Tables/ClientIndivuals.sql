@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Indivuals]
+﻿CREATE TABLE [dbo].[ClientIndivuals]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL , 
     [RefId] BIGINT NOT NULL IDENTITY (1,1), 

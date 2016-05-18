@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Businesses]
+﻿CREATE TABLE [dbo].[ClientBusinesses]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL , 
     [RefId] BIGINT NOT NULL IDENTITY (1,1),

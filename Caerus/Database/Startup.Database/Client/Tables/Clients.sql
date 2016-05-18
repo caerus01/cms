@@ -4,7 +4,6 @@
     [RefId] BIGINT NOT NULL IDENTITY (1,1),  
 	[ShortDescription] NVARCHAR(500) NULL, 
     [ClientType] INT NOT NULL, 
-    [ClientSubType] INT NOT NULL, 
     [ClientStatus] INT NOT NULL, 
     [OriginSourceIp] VARCHAR(250) NULL, 
 	[ExternalReference] NVARCHAR(500) NULL, 
