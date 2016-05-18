@@ -81,6 +81,7 @@
     <Folder Include="Client\Tables" />
     <Folder Include="FieldMapping" />
     <Folder Include="FieldMapping\Tables" />
+    <Folder Include="Document\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Configuration\ScalarFunctions\GetModuleSetting.sql" />
@@ -114,6 +115,8 @@
     <Build Include="Client\Tables\ClientEmploymentDetails.sql" />
     <Build Include="Client\Tables\ClientNextOfKinDetails.sql" />
     <Build Include="Client\Tables\ClientAffordabilityDetails.sql" />
+    <Build Include="Client\Tables\ClientNotes.sql" />
+    <Build Include="Document\Tables\Documents.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Utils\ScalarFunctions\IsLeapYear.sql" />
