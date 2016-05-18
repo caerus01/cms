@@ -103,7 +103,7 @@
     <Build Include="Utils\StoredProcedures\SearchProcedures.sql" />
     <Build Include="Utils\StoredProcedures\GetAllTables.sql" />
     <Build Include="Utils\StoredProcedures\GetAllProcedures.sql" />
-    <Build Include="Lookup\Tables\Provinces.sql" />
+    <Build Include="Lookup\Tables\lk_Provinces.sql" />
     <Build Include="Client\Tables\Clients.sql" />
     <Build Include="Client\Tables\ClientIndivuals.sql" />
     <Build Include="Client\Tables\ClientBusinesses.sql" />
@@ -117,6 +117,8 @@
     <Build Include="Client\Tables\ClientAffordabilityDetails.sql" />
     <Build Include="Client\Tables\ClientNotes.sql" />
     <Build Include="Document\Tables\Documents.sql" />
+    <Build Include="Lookup\Tables\lk_Banks.sql" />
+    <Build Include="Lookup\Tables\lk_BankBranches.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Utils\ScalarFunctions\IsLeapYear.sql" />

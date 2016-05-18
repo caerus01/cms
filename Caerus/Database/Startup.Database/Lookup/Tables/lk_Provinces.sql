@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Provinces] (
+﻿CREATE TABLE [dbo].[lk_Provinces] (
 	[Id] UNIQUEIDENTIFIER NOT NULL, 
     [RefId]           BIGINT               IDENTITY (1, 1) NOT NULL,
     [Name]         VARCHAR (200)     NOT NULL,

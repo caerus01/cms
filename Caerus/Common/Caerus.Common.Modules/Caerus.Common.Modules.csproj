@@ -61,6 +61,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client\Entities\Client.cs" />
+    <Compile Include="Client\Entities\ClientAddressDetail.cs" />
+    <Compile Include="Client\Entities\ClientAffordabilityDetail.cs" />
+    <Compile Include="Client\Entities\ClientBankingDetail.cs" />
+    <Compile Include="Client\Entities\ClientBusiness.cs" />
+    <Compile Include="Client\Entities\ClientContactDetail.cs" />
+    <Compile Include="Client\Entities\ClientEmploymentDetail.cs" />
+    <Compile Include="Client\Entities\ClientIndivual.cs" />
+    <Compile Include="Client\Entities\ClientNextOfKinDetail.cs" />
+    <Compile Include="Client\Entities\ClientNote.cs" />
     <Compile Include="Client\Enums\ClientEntityTypes.cs" />
     <Compile Include="Client\Enums\GenderTypes.cs" />
     <Compile Include="Client\Enums\TitleTypes.cs" />
@@ -115,7 +125,6 @@
   <ItemGroup>
     <Folder Include="Accounting\" />
     <Folder Include="BankAccount\" />
-    <Folder Include="Client\Entities\" />
     <Folder Include="Configuration\Enums\" />
     <Folder Include="Configuration\ViewModels\" />
     <Folder Include="Document\" />

@@ -14,5 +14,8 @@ namespace Caerus.Common.Modules.Client.Enums
         BankingDetail = 3, 
         Address = 4, 
         Contact = 5,
+        Employment = 6,
+        NextOfKin = 7,
+        Affordability = 8
     }
 }

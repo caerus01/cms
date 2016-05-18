@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caerus.Common.Enums;
+using Caerus.Common.Extentions;
 using Caerus.Common.Modules.Client.Interfaces;
 using Caerus.Common.Modules.FieldMapping.Enums;
 using Caerus.Common.Modules.FieldMapping.ViewModels;
@@ -33,22 +34,60 @@ namespace Caerus.Modules.Client.Service
 
         public DynamicFieldReplyViewModel GetEntityFieldsByRank(long owningEntityRef, FieldRanks fieldRank)
         {
-            throw new NotImplementedException();
+            var result = new DynamicFieldReplyViewModel();
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _session.Logger.WrapException(ex).CopyProperties(result);
+            }
+            return result;
         }
 
         public DynamicFieldReplyViewModel GetEntityFieldsByView(long owningEntityRef, int view)
         {
-            throw new NotImplementedException();
+            var result = new DynamicFieldReplyViewModel();
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _session.Logger.WrapException(ex).CopyProperties(result);
+            }
+            return result;
         }
 
         public DynamicFieldReplyViewModel GetEntityFieldsByEntityType(long owningEntityRef, int entityType)
         {
-            throw new NotImplementedException();
+            var result = new DynamicFieldReplyViewModel();
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _session.Logger.WrapException(ex).CopyProperties(result);
+            }
+            return result;
         }
 
         public ReplyObject SaveEntityFields(DynamicFieldReplyViewModel viewModel)
         {
-            throw new NotImplementedException();
+            var result = new DynamicFieldReplyViewModel();
+            try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+               _session.Logger.WrapException(ex).CopyProperties(result);
+            }
+            return result;
         }
+
+      
     }
 }

@@ -213,7 +213,7 @@ namespace Caerus.Common.Logging
             var result = new ReplyObject() { ReplyStatus = replyStatus };
             var frame = new StackTrace().GetFrame(2);
             LogFatal(frame.GetMethod().Name, ex, props);
-            result.ReplyMessage = string.Format("Exception was caught in {0}", frame.GetMethod().Name);
+            result.ReplyMessage = string.Format("Oh crumbs! Problem occurred in {0}", frame.GetMethod().Name);
             var et = ex as DbEntityValidationException;
             if (et != null && et.EntityValidationErrors != null)
             {
