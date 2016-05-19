@@ -210,6 +210,8 @@ namespace Caerus.Modules.FieldMapping.Service
                     result.ReplyStatus = ReplyStatus.Warning;
                     result.ReplyMessage = "Field Validation Failed";
                 }
+
+                return ResolveServiceFromType(viewModel.OwningType).SaveEntityFields(viewModel);
             }
             catch (Exception ex)
             {
