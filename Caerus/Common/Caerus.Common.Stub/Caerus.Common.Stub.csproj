@@ -64,6 +64,8 @@
   <ItemGroup>
     <Compile Include="Services\StubAuthenticationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\StubClientService.cs" />
+    <Compile Include="Services\StubDynamicService.cs" />
     <Compile Include="Sessions\StubCaerusSession.cs" />
     <Compile Include="Services\StubConfigurationService.cs" />
   </ItemGroup>

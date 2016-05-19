@@ -13,8 +13,8 @@ namespace Caerus.Common.Enums
         Notification = 2,
         Client = 3,
         Audit = 4,
-        Address = 5,
-        FieldMapping = 6
+        FieldMapping = 5,
+        GeoCode = 6
 
     }
 }

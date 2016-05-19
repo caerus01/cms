@@ -8,6 +8,7 @@ namespace Caerus.Common.Modules.FieldMapping.Enums
 {
     public enum OwningTypes
     {
+        Unknown = 0,
         Client = 1
     }
 }

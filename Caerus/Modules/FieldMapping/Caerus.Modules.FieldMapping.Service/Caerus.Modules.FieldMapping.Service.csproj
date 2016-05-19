@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,6 +67,10 @@
     <ProjectReference Include="..\..\..\Common\Caerus.Common.Modules\Caerus.Common.Modules.csproj">
       <Project>{BE43721B-EE7E-4D5E-A416-B2A696B5AEE4}</Project>
       <Name>Caerus.Common.Modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Caerus.Common.Stub\Caerus.Common.Stub.csproj">
+      <Project>{60334971-b7ac-469e-a0ea-ffe4e3812efc}</Project>
+      <Name>Caerus.Common.Stub</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Caerus.Common\Caerus.Common.csproj">
       <Project>{37386a98-4a7f-4197-965b-fc9eba8166c7}</Project>

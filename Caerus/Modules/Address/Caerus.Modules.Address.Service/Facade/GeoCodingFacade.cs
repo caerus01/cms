@@ -92,7 +92,7 @@ namespace Caerus.Modules.GeoCode.Service.Facade
             }
             catch (Exception ex)
             {
-                var exResult = _session.Logger.WrapException(ex, new dynamic[] { address.OwningRefId, address.AddresType });
+                var exResult = _session.Logger.WrapException(ex, new dynamic[] { address.ClientRefId });
                 exResult.CopyProperties(address);
             }
             return address;
