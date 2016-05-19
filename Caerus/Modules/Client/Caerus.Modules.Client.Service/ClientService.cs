@@ -35,6 +35,7 @@ namespace Caerus.Modules.Client.Service
             }
         }
 
+
         private DynamicEntityViewModel GetEntityModelByType(ClientEntityTypes type, long owningEntityRef)
         {
             switch (type)
@@ -137,6 +138,72 @@ namespace Caerus.Modules.Client.Service
             }
         }
 
+        private ReplyObject SaveEntity<T>(ClientEntityTypes type, T data)
+        {
+            var result = new ReplyObject();
+            try
+            {
+
+                switch (type)
+                {
+                    case ClientEntityTypes.Address:
+                        {
+                            _repository.UpsertAddressDetail(data as ClientAddressDetail);
+                            break;
+                        }
+                    case ClientEntityTypes.Affordability:
+                        {
+                            _repository.UpsertAffordabilityDetail(data as ClientAffordabilityDetail);
+                            break;
+                        }
+                    case ClientEntityTypes.BankingDetail:
+                        {
+                            _repository.UpsertBankingDetail(data as ClientBankingDetail);
+                            break;
+                        }
+                    case ClientEntityTypes.Business:
+                        {
+                            _repository.UpsertBusiness(data as ClientBusiness);
+                            break;
+                        }
+                    case ClientEntityTypes.Client:
+                        {
+                            _repository.UpsertClient(data as Common.Modules.Client.Entities.Client);
+                            break;
+                        }
+                    case ClientEntityTypes.Contact:
+                        {
+                            _repository.UpsertContactDetail(data as ClientContactDetail);
+                            break;
+                        }
+                    case ClientEntityTypes.Employment:
+                        {
+                            _repository.UpsertEmploymentDetail(data as ClientEmploymentDetail);
+                            break;
+                        }
+                    case ClientEntityTypes.Individual:
+                        {
+                            _repository.UpsertIndivual(data as ClientIndivual);
+                            break;
+                        }
+                    case ClientEntityTypes.NextOfKin:
+                        {
+                            _repository.UpsertNextOfKinDetail(data as ClientNextOfKinDetail);
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+            }
+            catch (Exception ex)
+            {
+                _session.Logger.WrapException(ex).CopyProperties(result);
+            }
+            return result;
+        }
+
         public List<DynamicEntityViewModel> GetEntityModelsByTypes(List<int> requiredEntityTypes, long owningEntityRef)
         {
             var entities = new List<DynamicEntityViewModel>();
@@ -166,58 +233,7 @@ namespace Caerus.Modules.Client.Service
                             if (prop != null)
                                 prop.SetValue(data, fitem.Value);
                         }
-                        switch ((ClientEntityTypes)item.OwningEntityType)
-                        {
-                            case ClientEntityTypes.Address:
-                                {
-                                    _repository.UpsertAddressDetail(data.EntityObject);
-                                    break;
-                                }
-                            case ClientEntityTypes.Affordability:
-                                {
-                                    _repository.UpsertAffordabilityDetail(data.EntityObject);
-                                    break;
-                                }
-                            case ClientEntityTypes.BankingDetail:
-                                {
-                                    _repository.UpsertBankingDetail(data.EntityObject);
-                                    break;
-                                }
-                            case ClientEntityTypes.Business:
-                                {
-                                    _repository.UpsertBusiness(data.EntityObject);
-                                    break;
-                                }
-                            case ClientEntityTypes.Client:
-                                {
-                                    _repository.UpsertClient(data.EntityObject);
-                                    break;
-                                }
-                            case ClientEntityTypes.Contact:
-                                {
-                                    _repository.UpsertContactDetail(data.EntityObject);
-                                    break;
-                                }
-                            case ClientEntityTypes.Employment:
-                                {
-                                    _repository.UpsertEmploymentDetail(data.EntityObject);
-                                    break;
-                                }
-                            case ClientEntityTypes.Individual:
-                                {
-                                    _repository.UpsertIndivual(data.EntityObject);
-                                    break;
-                                }
-                            case ClientEntityTypes.NextOfKin:
-                                {
-                                    _repository.UpsertNextOfKinDetail(data.EntityObject);
-                                    break;
-                                }
-                            default:
-                                {
-                                    break;
-                                }
-                        }
+                        SaveEntity((ClientEntityTypes) item.OwningEntityType, data);
                     }
 
                 }
@@ -229,6 +245,6 @@ namespace Caerus.Modules.Client.Service
             return result;
         }
 
-
+    
     }
 }
