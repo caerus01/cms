@@ -44,7 +44,7 @@ namespace Caerus.Modules.Client.Service
                         return new DynamicEntityViewModel()
                         {
                             OwningEntityType = type.AsInt(),
-                            EntityObject = _repository.GetAddressDetailsByClientRefId(owningEntityRef),
+                            EntityObject = _repository.GetAddressDetailsByClientRefId(owningEntityRef) ?? new ClientAddressDetail() { ClientRefId = owningEntityRef },
                             EntityType = typeof(ClientAddressDetail)
                         };
                         break;
@@ -54,7 +54,7 @@ namespace Caerus.Modules.Client.Service
                         return new DynamicEntityViewModel()
                         {
                             OwningEntityType = type.AsInt(),
-                            EntityObject = _repository.GetAffordabilityDetailsByClientRefId(owningEntityRef),
+                            EntityObject = _repository.GetAffordabilityDetailsByClientRefId(owningEntityRef) ?? new ClientAffordabilityDetail() { ClientRefId = owningEntityRef },
                             EntityType = typeof(ClientAffordabilityDetail)
                         };
                         break;
@@ -64,7 +64,7 @@ namespace Caerus.Modules.Client.Service
                         return new DynamicEntityViewModel()
                          {
                              OwningEntityType = type.AsInt(),
-                             EntityObject = _repository.GetBankingDetailsByClientRefId(owningEntityRef),
+                             EntityObject = _repository.GetBankingDetailsByClientRefId(owningEntityRef) ?? new ClientBankingDetail() { ClientRefId = owningEntityRef },
                              EntityType = typeof(ClientBankingDetail)
                          };
                         break;
@@ -74,7 +74,7 @@ namespace Caerus.Modules.Client.Service
                         return new DynamicEntityViewModel()
                         {
                             OwningEntityType = type.AsInt(),
-                            EntityObject = _repository.GetBusinessesByClientRefId(owningEntityRef),
+                            EntityObject = _repository.GetBusinessesByClientRefId(owningEntityRef) ?? new ClientBusiness() { ClientRefId = owningEntityRef },
                             EntityType = typeof(ClientBusiness)
                         };
                         break;
@@ -84,7 +84,7 @@ namespace Caerus.Modules.Client.Service
                         return new DynamicEntityViewModel()
                         {
                             OwningEntityType = type.AsInt(),
-                            EntityObject = _repository.GetClient(owningEntityRef),
+                            EntityObject = _repository.GetClient(owningEntityRef) ?? new Common.Modules.Client.Entities.Client(),
                             EntityType = typeof(Common.Modules.Client.Entities.Client)
                         };
                         break;
@@ -94,7 +94,7 @@ namespace Caerus.Modules.Client.Service
                         return new DynamicEntityViewModel()
                          {
                              OwningEntityType = type.AsInt(),
-                             EntityObject = _repository.GetContactDetailsByClientRefId(owningEntityRef),
+                             EntityObject = _repository.GetContactDetailsByClientRefId(owningEntityRef) ?? new ClientContactDetail() { ClientRefId = owningEntityRef },
                              EntityType = typeof(ClientContactDetail)
                          };
                         break;
@@ -104,7 +104,7 @@ namespace Caerus.Modules.Client.Service
                         return new DynamicEntityViewModel()
                         {
                             OwningEntityType = type.AsInt(),
-                            EntityObject = _repository.GetEmploymentDetailByClientRefId(owningEntityRef),
+                            EntityObject = _repository.GetEmploymentDetailByClientRefId(owningEntityRef) ?? new ClientEmploymentDetail() { ClientRefId = owningEntityRef },
                             EntityType = typeof(ClientEmploymentDetail)
                         };
                         break;
@@ -114,7 +114,7 @@ namespace Caerus.Modules.Client.Service
                         return new DynamicEntityViewModel()
                         {
                             OwningEntityType = type.AsInt(),
-                            EntityObject = _repository.GetIndivualByClientRefId(owningEntityRef),
+                            EntityObject = _repository.GetIndivualByClientRefId(owningEntityRef) ?? new ClientIndivual() { ClientRefId = owningEntityRef },
                             EntityType = typeof(ClientIndivual)
                         };
                         break;
@@ -124,7 +124,7 @@ namespace Caerus.Modules.Client.Service
                         return new DynamicEntityViewModel()
                          {
                              OwningEntityType = type.AsInt(),
-                             EntityObject = _repository.GetNextOfKinDetailByClientRefId(owningEntityRef),
+                             EntityObject = _repository.GetNextOfKinDetailByClientRefId(owningEntityRef) ?? new ClientNextOfKinDetail() { ClientRefId = owningEntityRef },
                              EntityType = typeof(ClientNextOfKinDetail)
                          };
                         break;
@@ -150,12 +150,77 @@ namespace Caerus.Modules.Client.Service
             return entities;
         }
 
-        public ReplyObject SaveEntityFields(DynamicFieldReplyViewModel viewModel)
+        public ReplyObject SaveEntityFields(long owningEntityRef, List<DynamicResponseDataModel> entities)
         {
-            var result = new DynamicFieldReplyViewModel();
+            var result = new ReplyObject();
             try
             {
+                foreach (var item in entities)
+                {
+                    var data = GetEntityModelByType((ClientEntityTypes)item.OwningEntityType, owningEntityRef);
+                    if (data != null)
+                    {
+                        foreach (var fitem in item.Fields)
+                        {
+                            var prop = data.EntityType.GetProperty(fitem.Key);
+                            if (prop != null)
+                                prop.SetValue(data, fitem.Value);
+                        }
+                        switch ((ClientEntityTypes)item.OwningEntityType)
+                        {
+                            case ClientEntityTypes.Address:
+                                {
+                                    _repository.UpsertAddressDetail(data.EntityObject);
+                                    break;
+                                }
+                            case ClientEntityTypes.Affordability:
+                                {
+                                    _repository.UpsertAffordabilityDetail(data.EntityObject);
+                                    break;
+                                }
+                            case ClientEntityTypes.BankingDetail:
+                                {
+                                    _repository.UpsertBankingDetail(data.EntityObject);
+                                    break;
+                                }
+                            case ClientEntityTypes.Business:
+                                {
+                                    _repository.UpsertBusiness(data.EntityObject);
+                                    break;
+                                }
+                            case ClientEntityTypes.Client:
+                                {
+                                    _repository.UpsertClient(data.EntityObject);
+                                    break;
+                                }
+                            case ClientEntityTypes.Contact:
+                                {
+                                    _repository.UpsertContactDetail(data.EntityObject);
+                                    break;
+                                }
+                            case ClientEntityTypes.Employment:
+                                {
+                                    _repository.UpsertEmploymentDetail(data.EntityObject);
+                                    break;
+                                }
+                            case ClientEntityTypes.Individual:
+                                {
+                                    _repository.UpsertIndivual(data.EntityObject);
+                                    break;
+                                }
+                            case ClientEntityTypes.NextOfKin:
+                                {
+                                    _repository.UpsertNextOfKinDetail(data.EntityObject);
+                                    break;
+                                }
+                            default:
+                                {
+                                    break;
+                                }
+                        }
+                    }
 
+                }
             }
             catch (Exception ex)
             {

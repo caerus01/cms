@@ -183,7 +183,22 @@ namespace Caerus.Modules.FieldMapping.Service
                 if (validate.ReplyStatus != ReplyStatus.Success)
                     return validate;
 
-                return ResolveServiceFromType(viewModel.OwningType).SaveEntityFields(viewModel);
+                var entities = viewModel.Fields.Select(c => c.OwningEntityType).Distinct();
+                var model = new List<DynamicResponseDataModel>();
+                foreach (var item in entities)
+                {
+                    var itemModel = new DynamicResponseDataModel()
+                    {
+                        OwningEntityType = item
+                    };
+                    var fields = viewModel.Fields.Where(c => c.OwningEntityType == item).ToList();
+                    foreach (var fItem in fields)
+                    {
+                        itemModel.Fields.Add(fItem.FieldId, fItem.FieldValue);
+                    }
+                    model.Add(itemModel);
+                }
+                return ResolveServiceFromType(viewModel.OwningType).SaveEntityFields(viewModel.OwningEntityRef, model);
             }
             catch (Exception ex)
             {
@@ -210,8 +225,6 @@ namespace Caerus.Modules.FieldMapping.Service
                     result.ReplyStatus = ReplyStatus.Warning;
                     result.ReplyMessage = "Field Validation Failed";
                 }
-
-                return ResolveServiceFromType(viewModel.OwningType).SaveEntityFields(viewModel);
             }
             catch (Exception ex)
             {
@@ -305,6 +318,6 @@ namespace Caerus.Modules.FieldMapping.Service
 
             return false;
         }
-      
+
     }
 }

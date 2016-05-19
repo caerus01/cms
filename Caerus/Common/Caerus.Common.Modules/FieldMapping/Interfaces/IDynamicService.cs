@@ -14,6 +14,6 @@ namespace Caerus.Common.Modules.FieldMapping.Interfaces
     {
         OwningTypes OwningType { get; }
         List<DynamicEntityViewModel> GetEntityModelsByTypes(List<int> requiredEntityTypes, long owningEntityRef);
-        ReplyObject SaveEntityFields(DynamicFieldReplyViewModel viewModel);
+        ReplyObject SaveEntityFields(long owningEntityRef, List<DynamicResponseDataModel> entities);
     }
 }

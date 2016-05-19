@@ -19,7 +19,7 @@ namespace Caerus.Common.Modules.FieldMapping.ViewModels
 
 
         public List<FieldValidationModel> FieldValidations { get; set; }
-        public string FieldValue { get; set; }
+        public dynamic FieldValue { get; set; }
 
         public OwningTypes OwningType { get; set; }
         public int OwningEntityType { get; set; }

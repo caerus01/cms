@@ -25,7 +25,7 @@ namespace Caerus.Common.Stub.Services
            return new List<DynamicEntityViewModel>();
        }
 
-       public ReplyObject SaveEntityFields(DynamicFieldReplyViewModel viewModel)
+       public ReplyObject SaveEntityFields(long owningEntityRef, List<DynamicResponseDataModel> entities)
        {
            return new ReplyObject();
        }
