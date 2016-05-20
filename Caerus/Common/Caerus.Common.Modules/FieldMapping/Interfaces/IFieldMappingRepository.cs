@@ -14,6 +14,7 @@ namespace Caerus.Common.Modules.FieldMapping.Interfaces
         List<FieldDisplaySetup> GetEntityFieldsByRank(OwningTypes type, FieldRanks rank);
         List<FieldDisplaySetup> GetEntityFieldsByView(OwningTypes type, int view);
         List<FieldDisplaySetup> GetEntityFieldsByEntityType(OwningTypes type, int entityType);
+        List<FieldValidation> GetFieldValidationsByEntity(OwningTypes type, List<int> entities);
 
     }
 }

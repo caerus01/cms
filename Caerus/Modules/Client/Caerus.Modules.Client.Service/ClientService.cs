@@ -222,6 +222,14 @@ namespace Caerus.Modules.Client.Service
             var result = new ReplyObject();
             try
             {
+                var clientEntity = _repository.GetClient(owningEntityRef);
+                if (clientEntity == null)
+                {
+                    clientEntity = new Common.Modules.Client.Entities.Client();
+                    _repository.UpsertClient(clientEntity);
+                    _repository.SaveChanges();
+                    owningEntityRef = clientEntity.RefId;
+                }
                 foreach (var item in entities)
                 {
                     var data = GetEntityModelByType((ClientEntityTypes)item.OwningEntityType, owningEntityRef);

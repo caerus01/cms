@@ -16,7 +16,6 @@ namespace Caerus.Common.Modules.FieldMapping.Entities
         public long RefId { get; set; }
         public int OwningType { get; set; }
         public int OwningEntityType { get; set; }
-        public int View { get; set; }
         public string FieldId { get; set; }
         public int ValidationType { get; set; }
         public string ValidationValue { get; set; }

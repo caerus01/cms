@@ -87,9 +87,17 @@ namespace Caerus.Modules.FieldMapping.Service
                             SystemDataType = GetDataType(item.EntityType, fitem.FieldId)
                         };
 
-                        var prop = item.GetType().GetProperty(fitem.FieldId);
-                        if (prop != null)
-                            model.Value = prop.GetValue(item).ToString();
+                        if (item.EntityObject != null)
+                        {
+                            var prop = item.EntityObject.GetType().GetProperty(fitem.FieldId);
+                            var val = "";
+                            if (prop != null)
+                            {
+                                 val = prop.GetValue(item.EntityObject) ?? "";
+                            }
+                            model.Value = val;
+                        }
+                        
                         result.Add(model);
                     }
                 }
@@ -106,7 +114,10 @@ namespace Caerus.Modules.FieldMapping.Service
             var result = new DynamicFieldReplyViewModel();
             try
             {
+                result.OwningType = entityType;
+                result.OwningEntityRef = owningEntityRef;
                 var requiredEntityTypes = fields.Select(c => c.OwningEntityType).Distinct().ToList();
+                var validations = _repository.GetFieldValidationsByEntity(entityType, requiredEntityTypes);
                 var entityFields = ResolveServiceFromType(entityType).GetEntityModelsByTypes(requiredEntityTypes, owningEntityRef);
                 var entityData = GetEntityFields(owningEntityRef, fields, entityFields);
                 foreach (var item in fields)
@@ -118,6 +129,20 @@ namespace Caerus.Modules.FieldMapping.Service
                             c => c.FieldId == item.FieldId && c.OwningEntityType == item.OwningEntityType);
                     if (data != null)
                         model.FieldValue = data.Value;
+
+
+                    var vals = validations.Where(c => c.OwningEntityType == item.OwningEntityType).ToList();
+                    foreach (var fieldValidation in vals)
+                    {
+                        model.FieldValidations.Add(new FieldValidationModel()
+                        {
+                            FieldId = item.FieldId,
+                            ValidationMessage = fieldValidation.ValidationMessage,
+                            ValidationType = (FieldValidationTypes)fieldValidation.ValidationType
+                        });
+                    }
+
+                    result.Fields.Add(model);
                 }
 
             }

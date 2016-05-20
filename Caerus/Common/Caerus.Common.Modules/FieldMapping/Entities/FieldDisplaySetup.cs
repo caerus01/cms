@@ -24,12 +24,8 @@ namespace Caerus.Common.Modules.FieldMapping.Entities
         public int FieldType { get; set; }
         public string CssClass { get; set; }
         public int FieldRank { get; set; }
-        public int LookupType { get; set; }
+        public Nullable<int> LookupType { get; set; }
         public int ReadOnly { get; set; }
-        public bool ExcludeApi { get; set; }
-        public bool ExcludeInternal { get; set; }
-        public string Label2 { get; set; }
-        public string Label3 { get; set; }
         public string FieldMask { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }

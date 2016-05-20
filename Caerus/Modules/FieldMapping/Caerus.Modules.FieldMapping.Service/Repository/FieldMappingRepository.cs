@@ -39,5 +39,12 @@ namespace Caerus.Modules.FieldMapping.Service.Repository
             return
                 _context.FieldDisplaySetups.Where(c => c.OwningType == (int)type && c.OwningEntityType == entityType).ToList();
         }
+
+        public List<FieldValidation> GetFieldValidationsByEntity(OwningTypes type, List<int> entities)
+        {
+            return
+                _context.FieldValidations.Where(c => c.OwningType == (int)type && entities.Contains(c.OwningEntityType))
+                    .ToList();
+        }
     }
 }

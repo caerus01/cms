@@ -3,11 +3,14 @@
 	[RefId] [bigint] IDENTITY(1,1) NOT NULL,
 	[OwningType] [int] NOT NULL,
 	[OwningEntityType] [int] NOT NULL,
-	[View] [int] NOT NULL,
 	[FieldId] [nvarchar](200) NOT NULL,
 	[ValidationType] [int] NOT NULL,
 	[ValidationValue] [nvarchar](max) NOT NULL,
 	[ValidationMessage] [nvarchar](max) NOT NULL,
+	[DateCreated] DATETIME NOT NULL, 
+    [DateModified] DATETIME NOT NULL, 
+    [UserCreated] NVARCHAR(128) NULL, 
+    [UserModified] NVARCHAR(128) NULL, 
  CONSTRAINT [PK_FieldValidations] PRIMARY KEY CLUSTERED 
 (
 	[RefId] ASC

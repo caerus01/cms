@@ -154,6 +154,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceTests\AuthenticationServiceTests.cs" />
     <Compile Include="ServiceTests\ConfigurationServiceTests.cs" />
+    <Compile Include="ServiceTests\FieldMappingServiceTests.cs" />
     <Compile Include="Session\CaerusSessionTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,13 +192,29 @@
       <Project>{37386a98-4a7f-4197-965b-fc9eba8166c7}</Project>
       <Name>Caerus.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Address\Caerus.Modules.Address.Service\Caerus.Modules.GeoCode.Service.csproj">
+      <Project>{ba811d7e-369d-4f18-a653-e28ad9f3a132}</Project>
+      <Name>Caerus.Modules.GeoCode.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Audit\Caerus.Modules.Audit.Service\Caerus.Modules.Audit.Service.csproj">
+      <Project>{303a9747-6325-4866-bd40-0ea6b8d2fd93}</Project>
+      <Name>Caerus.Modules.Audit.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Modules\Authentication\AuthenticationService\Caerus.Modules.Authentication.Service.csproj">
       <Project>{87ea423a-09e9-405d-a183-516821ca2835}</Project>
       <Name>Caerus.Modules.Authentication.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Client\Caerus.Modules.Client.Service\Caerus.Modules.Client.Service.csproj">
+      <Project>{fd7f61f2-4bed-42ed-aaf1-b08b3b62c127}</Project>
+      <Name>Caerus.Modules.Client.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Modules\Configuration\ConfigurationService\Caerus.Modules.Configuration.Service.csproj">
       <Project>{2d0e1fe1-0e59-41eb-abe8-a4742551b44f}</Project>
       <Name>Caerus.Modules.Configuration.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\FieldMapping\Caerus.Modules.FieldMapping.Service\Caerus.Modules.FieldMapping.Service.csproj">
+      <Project>{9b483e0b-7bd4-42c6-afa3-575ab3828096}</Project>
+      <Name>Caerus.Modules.FieldMapping.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
