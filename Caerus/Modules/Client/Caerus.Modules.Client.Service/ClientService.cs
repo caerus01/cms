@@ -233,15 +233,15 @@ namespace Caerus.Modules.Client.Service
                 foreach (var item in entities)
                 {
                     var data = GetEntityModelByType((ClientEntityTypes)item.OwningEntityType, owningEntityRef);
-                    if (data != null)
+                    if (data != null && data.EntityObject != null)
                     {
                         foreach (var fitem in item.Fields)
                         {
                             var prop = data.EntityType.GetProperty(fitem.Key);
                             if (prop != null)
-                                prop.SetValue(data, fitem.Value);
+                                prop.SetValue(data.EntityObject, fitem.Value);
                         }
-                        SaveEntity((ClientEntityTypes) item.OwningEntityType, data);
+                        SaveEntity((ClientEntityTypes)item.OwningEntityType, data.EntityObject);
                     }
 
                 }
