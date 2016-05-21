@@ -236,12 +236,7 @@ namespace Caerus.Modules.Client.Service
                     var data = GetEntityModelByType((ClientEntityTypes)item.OwningEntityType, owningEntityRef);
                     if (data != null && data.EntityObject != null)
                     {
-                        foreach (var fitem in item.Fields)
-                        {
-                            var prop = data.EntityType.GetProperty(fitem.Key);
-                            if (prop != null)
-                               PropertyExtentions.SafeSetProperty(prop, data.EntityObject, fitem.Value);
-                        }
+                        _session.FieldMappingService.AssignFields(item.Fields, data.EntityObject, data.EntityType);
                         SaveEntity((ClientEntityTypes)item.OwningEntityType, data.EntityObject);
                     }
 
@@ -254,6 +249,6 @@ namespace Caerus.Modules.Client.Service
             return result;
         }
 
-    
+
     }
 }

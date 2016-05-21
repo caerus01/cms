@@ -12,7 +12,7 @@ namespace Caerus.Common.Extentions
         public static void SafeSetProperty(PropertyInfo target, object destination, dynamic value)
         {
             //fix SQL datetime min here
-            if (target == typeof(DateTime) && (value < new DateTime(1900, 01, 01) || value == null))
+            if ((target == typeof(DateTime) || Nullable.GetUnderlyingType(target.PropertyType) == typeof(DateTime)) && (value < new DateTime(1900, 01, 01) || value == null))
                 value = new DateTime(1900, 01, 01);
 
             if (Nullable.GetUnderlyingType(target.PropertyType) == null && value == null)

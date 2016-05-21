@@ -12,6 +12,7 @@ using Caerus.Common.Modules.FieldMapping.Enums;
 using Caerus.Common.Modules.FieldMapping.Interfaces;
 using Caerus.Common.Modules.FieldMapping.ViewModels;
 using Caerus.Common.Modules.Session.Interfaces;
+using Caerus.Common.Stub.BaseServices;
 using Caerus.Common.Stub.Services;
 using Caerus.Common.ViewModels;
 using Caerus.Modules.FieldMapping.Service.Repository;
@@ -69,7 +70,7 @@ namespace Caerus.Modules.FieldMapping.Service
             return SystemDataTypes.Unknown;
         }
 
-        private List<FieldItemDataModel> GetEntityFields(long owningEntityRef, List<FieldDisplaySetup> requiredFields, List<DynamicEntityViewModel> entities)
+        private List<FieldItemDataModel> GetEntityFields(List<FieldDisplaySetup> requiredFields, List<DynamicEntityViewModel> entities)
         {
             var result = new List<FieldItemDataModel>();
             try
@@ -77,7 +78,7 @@ namespace Caerus.Modules.FieldMapping.Service
 
                 foreach (var item in entities)
                 {
-                    var fields = requiredFields.Where(c => c.OwningType == item.OwningEntityType).ToList();
+                    var fields = requiredFields.Where(c => c.OwningEntityType == item.OwningEntityType).ToList();
                     foreach (var fitem in fields)
                     {
                         var model = new FieldItemDataModel()
@@ -93,11 +94,11 @@ namespace Caerus.Modules.FieldMapping.Service
                             var val = "";
                             if (prop != null)
                             {
-                                 val = prop.GetValue(item.EntityObject) ?? "";
+                                val = prop.GetValue(item.EntityObject) ?? "";
                             }
                             model.Value = val;
                         }
-                        
+
                         result.Add(model);
                     }
                 }
@@ -119,7 +120,7 @@ namespace Caerus.Modules.FieldMapping.Service
                 var requiredEntityTypes = fields.Select(c => c.OwningEntityType).Distinct().ToList();
                 var validations = _repository.GetFieldValidationsByEntity(entityType, requiredEntityTypes);
                 var entityFields = ResolveServiceFromType(entityType).GetEntityModelsByTypes(requiredEntityTypes, owningEntityRef);
-                var entityData = GetEntityFields(owningEntityRef, fields, entityFields);
+                var entityData = GetEntityFields(fields, entityFields);
                 foreach (var item in fields)
                 {
                     var model = new FieldItemModel();
@@ -154,7 +155,7 @@ namespace Caerus.Modules.FieldMapping.Service
         }
         #endregion
 
-        public DynamicFieldReplyViewModel GetEntityFieldsByRank(OwningTypes entityType, long owningEntityRef, FieldRanks fieldRank)
+        public DynamicFieldReplyViewModel GetEntityFieldsByRank(OwningTypes entityType, long owningEntityRef, int fieldRank)
         {
             var result = new DynamicFieldReplyViewModel();
             try
@@ -237,11 +238,20 @@ namespace Caerus.Modules.FieldMapping.Service
             var result = new ReplyObject();
             try
             {
+                var qry = from t in viewModel.Fields
+                           select new FieldEntityViewModel
+                           {
+                               OwningEntityType = t.OwningEntityType,
+                               FieldId = t.FieldId
+                           };
+                var list = qry.ToList();
+                var validations = _repository.GetFieldValidationsByEntityAndField(viewModel.OwningType, list);
+
                 foreach (var field in viewModel.Fields)
                 {
-                    foreach (var validation in field.FieldValidations)
+                    foreach (var validation in validations.Where(c => c.OwningEntityType == field.OwningEntityType && c.FieldId == field.FieldId).ToList())
                     {
-                        if (!IsValid(validation.ValidationType, field.FieldValue, validation.ValidationValue))
+                        if (!IsValid((FieldValidationTypes)validation.ValidationType, field.FieldValue, validation.ValidationValue))
                             result.Errors.Add(validation.ValidationMessage);
                     }
                 }
@@ -250,6 +260,53 @@ namespace Caerus.Modules.FieldMapping.Service
                     result.ReplyStatus = ReplyStatus.Warning;
                     result.ReplyMessage = "Field Validation Failed";
                 }
+            }
+            catch (Exception ex)
+            {
+                _session.Logger.WrapException(ex).CopyProperties(result);
+            }
+            return result;
+        }
+
+        public ReplyObject AssignFields(Dictionary<string, dynamic> fields, dynamic entity, Type entityType)
+        {
+            var result = new ReplyObject();
+            try
+            {
+                foreach (var fitem in fields)
+                {
+                    var prop = entityType.GetProperty(fitem.Key);
+                    if (prop != null)
+                        PropertyExtentions.SafeSetProperty(prop, entity, fitem.Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                _session.Logger.WrapException(ex).CopyProperties(result);
+            }
+            return result;
+        }
+
+        public NextOutstandingCheckViewModel GetNextOutstandingEntityByRank(OwningTypes entityType, long owningEntityRef, int maxRankCheck = 2)
+        {
+            var result = new NextOutstandingCheckViewModel();
+            try
+            {
+                for (int i = 1; i <= maxRankCheck; i++)
+                {
+                    var model = GetEntityFieldsByRank(entityType, owningEntityRef, i);
+                    var isValid = IsModelValid(model);
+                    if (isValid.ReplyStatus != ReplyStatus.Success)
+                    {
+
+                        isValid.CopyProperties(result);
+                        result.OutstandingRank = i;
+                        result.ReplyMessage = "Outstanding entity at rank " + i;
+                        return result;
+                    }
+
+                }
+
             }
             catch (Exception ex)
             {

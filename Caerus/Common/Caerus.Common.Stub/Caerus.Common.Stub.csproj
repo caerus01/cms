@@ -62,10 +62,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Providers\Notification\StubEmailProvider.cs" />
+    <Compile Include="Providers\Notification\StubPushProvider.cs" />
+    <Compile Include="Providers\Notification\StubRealTimeProvider.cs" />
+    <Compile Include="Providers\Notification\StubSmsProvider.cs" />
+    <Compile Include="Services\StubAuditService.cs" />
     <Compile Include="Services\StubAuthenticationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\StubClientService.cs" />
-    <Compile Include="Services\StubDynamicService.cs" />
+    <Compile Include="BaseServices\StubDynamicService.cs" />
+    <Compile Include="Services\StubFieldMappingService.cs" />
+    <Compile Include="Services\StubNotificationService.cs" />
     <Compile Include="Sessions\StubCaerusSession.cs" />
     <Compile Include="Services\StubConfigurationService.cs" />
   </ItemGroup>

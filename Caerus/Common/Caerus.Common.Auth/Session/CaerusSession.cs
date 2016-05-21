@@ -82,9 +82,27 @@ namespace Caerus.Common.Auth.Session
             get { return _configurationService ?? (_configurationService = CaerusSessionInjectorService.GetService<IConfigurationService>(this, ModuleTypes.Configuration, IsAuthenticated)); }
             set { _configurationService = value; }
         }
-        public IClientService ClientService { get; set; }
-        public IFieldMappingService FieldMappingService { get; set; }
-        public INotificationService NotificationService { get; set; }
+
+        private IClientService _clientService;
+        public IClientService ClientService
+        {
+            get { return _clientService ?? (_clientService = CaerusSessionInjectorService.GetService<IClientService>(this, ModuleTypes.Client, IsAuthenticated)); }
+            set { _clientService = value; }
+        }
+
+        private IFieldMappingService _fieldMappingService;
+        public IFieldMappingService FieldMappingService
+        {
+            get { return _fieldMappingService ?? (_fieldMappingService = CaerusSessionInjectorService.GetService<IFieldMappingService>(this, ModuleTypes.FieldMapping, IsAuthenticated)); }
+            set { _fieldMappingService = value; }
+        }
+
+        private INotificationService _notificationService;
+        public INotificationService NotificationService
+        {
+            get { return _notificationService ?? (_notificationService = CaerusSessionInjectorService.GetService<INotificationService>(this, ModuleTypes.Notification, IsAuthenticated)); }
+            set { _notificationService = value; }
+        }
        
 
         #endregion

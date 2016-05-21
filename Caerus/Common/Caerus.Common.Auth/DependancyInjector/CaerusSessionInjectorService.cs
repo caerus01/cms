@@ -25,6 +25,22 @@ namespace Caerus.Common.Auth.DependancyInjector
                 {
                     return (T) (object) new StubAuthenticationService();
                 }
+                case ModuleTypes.FieldMapping:
+                {
+                    return (T)(object)new StubFieldMappingService();
+                }
+                case ModuleTypes.Client:
+                {
+                    return (T)(object)new StubClientService();
+                }
+                case ModuleTypes.Notification:
+                {
+                    return (T)(object)new StubNotificationService();
+                }
+                case ModuleTypes.Audit:
+                {
+                    return (T)(object)new StubAuditService();
+                }
             }
             throw new Exception("Service not defined of type " + module.ToEnumerationDescription());
         }

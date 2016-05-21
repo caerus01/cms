@@ -71,6 +71,7 @@
     <Compile Include="Client\Entities\ClientIndivual.cs" />
     <Compile Include="Client\Entities\ClientNextOfKinDetail.cs" />
     <Compile Include="Client\Entities\ClientNote.cs" />
+    <Compile Include="Client\Enums\ClientEntityRanks.cs" />
     <Compile Include="Client\Enums\ClientEntityTypes.cs" />
     <Compile Include="Client\Enums\GenderTypes.cs" />
     <Compile Include="Client\Enums\TitleTypes.cs" />
@@ -78,7 +79,9 @@
     <Compile Include="FieldMapping\Enums\SystemDataTypes.cs" />
     <Compile Include="FieldMapping\ViewModels\DynamicEntityViewModel.cs" />
     <Compile Include="FieldMapping\ViewModels\DynamicResponseDataModel.cs" />
+    <Compile Include="FieldMapping\ViewModels\FieldEntityViewModel.cs" />
     <Compile Include="FieldMapping\ViewModels\FieldItemDataModel.cs" />
+    <Compile Include="FieldMapping\ViewModels\NextOutstandingCheckViewModel.cs" />
     <Compile Include="Geocode\Interfaces\IGeocodeService.cs" />
     <Compile Include="Geocode\ValueObjects\GeocodeResponse.cs" />
     <Compile Include="Client\ViewModels\AddressViewModel.cs" />
@@ -102,7 +105,6 @@
     <Compile Include="FieldMapping\Entities\FieldDisplaySetup.cs" />
     <Compile Include="FieldMapping\Entities\FieldValidation.cs" />
     <Compile Include="FieldMapping\Enums\FieldDataTypes.cs" />
-    <Compile Include="FieldMapping\Enums\FieldRanks.cs" />
     <Compile Include="FieldMapping\Enums\FieldRequirementRanks.cs" />
     <Compile Include="FieldMapping\Enums\FieldTypes.cs" />
     <Compile Include="FieldMapping\Enums\FieldValidationTypes.cs" />

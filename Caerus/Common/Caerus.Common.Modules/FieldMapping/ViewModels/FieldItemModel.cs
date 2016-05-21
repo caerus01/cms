@@ -30,7 +30,7 @@ namespace Caerus.Common.Modules.FieldMapping.ViewModels
         public string ToolTip { get; set; }
         public FieldTypes FieldType { get; set; }
         public string CssClass { get; set; }
-        public FieldRanks FieldRank { get; set; }
+        public int FieldRank { get; set; }
         public LookupTypes LookupType { get; set; }
         public SystemDataTypes SystemDataType { get; set; }
         public bool ReadOnly { get; set; }

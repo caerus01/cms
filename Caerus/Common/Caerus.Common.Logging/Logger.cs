@@ -16,6 +16,19 @@ using Caerus.Common.ViewModels;
 namespace Caerus.Common.Logging
 {
 
+    public static class GlobalLogger
+    {
+        public static ReplyObject WrapException(Exception ex, dynamic[] props = null, ReplyStatus replyStatus = ReplyStatus.Fatal)
+        {
+            return new Logger().WrapException(ex, props, replyStatus, 3);
+        }
+
+        public static ReplyObject WrapStubInfo(dynamic[] props = null, ReplyStatus replyStatus = ReplyStatus.Success)
+        {
+            return new Logger().WrapStubInfo(props, replyStatus, 3);
+        }
+    }
+
     public class Logger : ICaerusLogger
     {
         public Logger()
@@ -23,7 +36,7 @@ namespace Caerus.Common.Logging
             Configure();
         }
 
-        private readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private void Configure()
         {
@@ -154,7 +167,7 @@ namespace Caerus.Common.Logging
             LogInfo(description + " : " + reference.ToString());
         }
 
-        private LoggingBody BuildLog(Exception ex, string message = "", dynamic[] properties = null)
+        private static LoggingBody BuildLog(Exception ex, string message = "", dynamic[] properties = null)
         {
             var body = new LoggingBody { Exception = ex };
             var frame = new StackTrace().GetFrame(2);
@@ -208,10 +221,10 @@ namespace Caerus.Common.Logging
             public Exception Exception { get; set; }
         }
 
-        public ReplyObject WrapException(Exception ex, dynamic[] props = null, ReplyStatus replyStatus = ReplyStatus.Fatal)
+        public ReplyObject WrapException(Exception ex, dynamic[] props = null, ReplyStatus replyStatus = ReplyStatus.Fatal, int stackframe = 2)
         {
             var result = new ReplyObject() { ReplyStatus = replyStatus };
-            var frame = new StackTrace().GetFrame(2);
+            var frame = new StackTrace().GetFrame(stackframe);
             LogFatal(frame.GetMethod().Name, ex, props);
             result.ReplyMessage = string.Format("Oh crumbs! Problem occurred in {0}", frame.GetMethod().Name);
             var et = ex as DbEntityValidationException;
@@ -228,5 +241,15 @@ namespace Caerus.Common.Logging
             return result;
         }
 
+        public ReplyObject WrapStubInfo(dynamic[] props = null, ReplyStatus replyStatus = ReplyStatus.Success, int stackframe = 2)
+        {
+            var result = new ReplyObject() { ReplyStatus = replyStatus };
+            var frame = new StackTrace().GetFrame(stackframe);
+            result.ReplyMessage = string.Format("Stub function called {0}", frame.GetMethod().Name);
+            var body = BuildLog(null, result.ReplyMessage, props);
+            log.Info(body.Message);
+            return result;
+        }
+       
     }
 }

@@ -18,6 +18,7 @@ namespace Caerus.Common.Interfaces
         void LogError(Exception exc, dynamic[] properties = null);
         void LogFatal(string methodName, Exception exception = null, dynamic[] properties = null);
         void LogSystemActivity(string description, long? reference = null, dynamic[] properties = null);
-        ReplyObject WrapException(Exception ex, dynamic[] props = null, ReplyStatus replyStatus = ReplyStatus.Fatal);
+        ReplyObject WrapException(Exception ex, dynamic[] props = null, ReplyStatus replyStatus = ReplyStatus.Fatal, int stackframe = 2);
+        ReplyObject WrapStubInfo(dynamic[] props = null, ReplyStatus replyStatus = ReplyStatus.Success, int stackframe = 2);
     }
 }
