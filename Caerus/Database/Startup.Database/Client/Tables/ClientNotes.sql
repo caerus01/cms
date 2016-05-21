@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [dbo].[ClientNotes](
 	[Id] [uniqueidentifier] NOT NULL,
 	[RefId] [bigint] IDENTITY(1,1) NOT NULL,
-	[ClientRefId] [bigint] NOT NULL,
-	[Title] [nvarchar](100) NOT NULL,
-	[NoteContent] [nvarchar](500) NOT NULL,
+	[ClientRefId] [bigint] NULL,
+	[Title] [nvarchar](100) NULL,
+	[NoteContent] [nvarchar](500) NULL,
 	[DateCreated] DATETIME NOT NULL, 
     [DateModified] DATETIME NOT NULL, 
     [UserCreated] NVARCHAR(128) NULL, 

@@ -12,12 +12,12 @@ namespace Caerus.Common.Modules.Client.Entities
    public class ClientBusiness
     {
         public Guid Id { get; set; }
-       [Key]
+        [Key]
         public long RefId { get; set; }
-        public long ClientRefId { get; set; }
+        public Nullable<long> ClientRefId { get; set; }
         public string Name { get; set; }
         public string TaxNumber { get; set; }
-        public int BusinessType { get; set; }
+        public Nullable<int> BusinessType { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
         public string UserCreated { get; set; }

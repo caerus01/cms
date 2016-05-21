@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -239,7 +240,7 @@ namespace Caerus.Modules.Client.Service
                         {
                             var prop = data.EntityType.GetProperty(fitem.Key);
                             if (prop != null)
-                                prop.SetValue(data.EntityObject, fitem.Value);
+                               PropertyExtentions.SafeSetProperty(prop, data.EntityObject, fitem.Value);
                         }
                         SaveEntity((ClientEntityTypes)item.OwningEntityType, data.EntityObject);
                     }

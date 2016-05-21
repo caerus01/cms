@@ -14,7 +14,7 @@ namespace Caerus.Common.Modules.Client.Entities
         public Guid Id { get; set; }
         [Key]
         public long RefId { get; set; }
-        public long ClientRefId { get; set; }
+        public Nullable<long> ClientRefId { get; set; }
         public string Title { get; set; }
         public string NoteContent { get; set; }
         public DateTime DateCreated { get; set; }

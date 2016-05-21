@@ -51,6 +51,7 @@
     <Compile Include="Extentions\EnumExtensions.cs" />
     <Compile Include="Extentions\IntegerExtensions.cs" />
     <Compile Include="Extentions\ObjectionExtensions.cs" />
+    <Compile Include="Extentions\PropertyExtentions.cs" />
     <Compile Include="Extentions\StringExtensions.cs" />
     <Compile Include="Interfaces\ICaerusLogger.cs" />
     <Compile Include="Interfaces\ICaerusUser.cs" />

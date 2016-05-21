@@ -100,6 +100,7 @@ namespace Caerus.Common.Extentions
            }
        }
 
+
        public sealed class StringWriterWithEncoding : StringWriter
        {
            private readonly Encoding encoding;

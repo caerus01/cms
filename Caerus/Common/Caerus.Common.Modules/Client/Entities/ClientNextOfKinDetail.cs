@@ -12,18 +12,18 @@ namespace Caerus.Common.Modules.Client.Entities
    public class ClientNextOfKinDetail
     {
         public Guid Id { get; set; }
-       [Key]
+        [Key]
         public long RefId { get; set; }
-        public long ClientRefId { get; set; }
+        public Nullable<long> ClientRefId { get; set; }
         public string Initials { get; set; }
         public string FirstName { get; set; }
         public string MiddleNames { get; set; }
         public string Surname { get; set; }
-        public int GenderType { get; set; }
-        public int Title { get; set; }
-        public int Relationship { get; set; }
-        public int Nationality { get; set; }
-        public int TypeOfId { get; set; }
+        public Nullable<int> GenderType { get; set; }
+        public Nullable<int> Title { get; set; }
+        public Nullable<int> Relationship { get; set; }
+        public Nullable<int> Nationality { get; set; }
+        public Nullable<int> TypeOfId { get; set; }
         public string IdNumber { get; set; }
         public string HomeTelephone { get; set; }
         public string WorkTelephone { get; set; }

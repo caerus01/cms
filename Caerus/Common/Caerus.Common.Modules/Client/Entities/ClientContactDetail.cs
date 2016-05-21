@@ -12,9 +12,9 @@ namespace Caerus.Common.Modules.Client.Entities
    public class ClientContactDetail
     {
         public Guid Id { get; set; }
-       [Key]
+        [Key]
         public long RefId { get; set; }
-        public long ClientRefId { get; set; }
+        public Nullable<long> ClientRefId { get; set; }
         public string ContactPerson { get; set; }
         public string WorkTelephone { get; set; }
         public string HomeTelephone { get; set; }
@@ -25,7 +25,7 @@ namespace Caerus.Common.Modules.Client.Entities
         public string Facebook { get; set; }
         public string YouTube { get; set; }
         public string Skype { get; set; }
-        public bool IsPrimary { get; set; }
+        public Nullable<bool> IsPrimary { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
         public string UserCreated { get; set; }

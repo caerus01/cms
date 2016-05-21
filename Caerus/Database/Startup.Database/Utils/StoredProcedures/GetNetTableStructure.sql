@@ -1,32 +1,33 @@
 ﻿
-CREATE PROCEDURE GetNetTableStructure
+
+CREATE PROCEDURE [dbo].[GetNetTableStructure]
 @tableName varchar(200)
 AS
 BEGIN
 	SELECT c.name AS ColumnName, t.name as ColumnType, 
-	CStatement = '        public ' + case t.name
-		when 'bigint' then 'long'
-		when 'binary' then 'bool'
-		when 'bit' then 'bool'
+	CStatement = ' public ' + case t.name
+		when 'bigint' then case when c.isnullable > 0 then 'Nullable<long>' else 'long' end
+		when 'binary' then case when c.isnullable > 0 then 'Nullable<bool>' else 'bool' end 
+		when 'bit' then case when c.isnullable > 0 then 'Nullable<bool>' else 'bool' end 
 		when 'char' then 'char'
-		when 'date' then 'DateTime'
-		when 'datetime' then 'DateTime'
-		when 'datetime2' then 'DateTime'
-		when 'datetimeoffset' then 'decimal'
-		when 'decimal' then 'decimal'
-		when 'float' then 'decimal'
-		when 'int' then 'int'
-		when 'money' then 'decimal'
+		when 'date' then case when c.isnullable > 0 then 'Nullable<DateTime>' else 'DateTime' end 
+		when 'datetime' then case when c.isnullable > 0 then 'Nullable<DateTime>' else 'DateTime' end 
+		when 'datetime2' then case when c.isnullable > 0 then 'Nullable<DateTime>' else 'DateTime' end 
+		when 'datetimeoffset' then  case when c.isnullable > 0 then 'Nullable<decimal>' else 'decimal' end  
+		when 'decimal' then  case when c.isnullable > 0 then 'Nullable<decimal>' else 'decimal' end  
+		when 'float' then  case when c.isnullable > 0 then 'Nullable<decimal>' else 'decimal' end  
+		when 'int' then  case when c.isnullable > 0 then 'Nullable<int>' else 'int' end  
+		when 'money' then case when c.isnullable > 0 then 'Nullable<decimal>' else 'decimal' end  
 		when 'nchar' then 'char'
-		when 'numeric' then 'decimal'
+		when 'numeric' then case when c.isnullable > 0 then 'Nullable<decimal>' else 'decimal' end  
 		when 'nvarchar' then 'string'
-		when 'real' then 'decimal'
-		when 'smalldatetime' then 'DateTime'
-		when 'smallint' then 'short'
-		when 'smallmoney' then 'decimal'
-		when 'time' then 'DateTime'
-		when 'timestamp' then 'DateTime'
-		when 'tinyint' then 'short'
+		when 'real' then case when c.isnullable > 0 then 'Nullable<decimal>' else 'decimal' end  
+		when 'smalldatetime' then case when c.isnullable > 0 then 'Nullable<DateTime>' else 'DateTime' end 
+		when 'smallint' then case when c.isnullable > 0 then 'Nullable<short>' else 'short' end  
+		when 'smallmoney' then case when c.isnullable > 0 then 'Nullable<decimal>' else 'decimal' end  
+		when 'time' then case when c.isnullable > 0 then 'Nullable<DateTime>' else 'DateTime' end 
+		when 'timestamp' then case when c.isnullable > 0 then 'Nullable<DateTime>' else 'DateTime' end 
+		when 'tinyint' then case when c.isnullable > 0 then 'Nullable<short>' else 'short' end  
 		when 'uniqueidentifier' then 'Guid'
 		when 'varchar' then 'string'
 		when 'xml' then 'string'
@@ -66,3 +67,7 @@ BEGIN
 	WHERE c.xusertype = t.xusertype
 and id = (SELECT id FROM sysobjects WHERE [Name] = @tableName)
 END
+
+
+
+

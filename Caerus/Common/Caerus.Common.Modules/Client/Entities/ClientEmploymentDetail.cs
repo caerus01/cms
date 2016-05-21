@@ -12,15 +12,15 @@ namespace Caerus.Common.Modules.Client.Entities
    public class ClientEmploymentDetail
     {
         public Guid Id { get; set; }
-       [Key]
+        [Key]
         public long RefId { get; set; }
-        public long ClientRefId { get; set; }
-        public int EmployerSectorId { get; set; }
-        public int EmploymentLevel { get; set; }
-        public int EmploymentType { get; set; }
-        public DateTime EmploymentStarted { get; set; }
-        public int SalaryRule { get; set; }
-        public int SalaryDayRule { get; set; }
+        public Nullable<long> ClientRefId { get; set; }
+        public Nullable<int> EmployerSectorId { get; set; }
+        public Nullable<int> EmploymentLevel { get; set; }
+        public Nullable<int> EmploymentType { get; set; }
+        public Nullable<DateTime> EmploymentStarted { get; set; }
+        public Nullable<int> SalaryRule { get; set; }
+        public Nullable<int> SalaryDayRule { get; set; }
         public string PayslipUsername { get; set; }
         public string PayslipPassword { get; set; }
         public string EmployerContactPerson { get; set; }

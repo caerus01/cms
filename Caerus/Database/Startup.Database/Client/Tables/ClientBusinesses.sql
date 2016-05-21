@@ -5,7 +5,7 @@
 	[ClientRefId] BIGINT NULL,
 	[Name] NVARCHAR(500) NULL, 
     [TaxNumber] NVARCHAR(500) NULL,  
-    [BusinessType] INT NOT NULL, 
+    [BusinessType] INT NULL, 
 	[DateCreated] DATETIME NOT NULL, 
     [DateModified] DATETIME NOT NULL, 
     [UserCreated] NVARCHAR(128) NULL, 
