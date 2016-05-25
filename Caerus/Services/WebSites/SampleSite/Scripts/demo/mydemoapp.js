@@ -2,7 +2,7 @@
 mainApp.controller('mainController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
     $scope.MyValue = {
         Field: {
-            FieldValue: "my name",
+            FieldValue: "Piet Boomklim",
             OwningType: 0,
             OwningEntityType: 1,
             View: 1,
@@ -11,19 +11,17 @@ mainApp.controller('mainController', ['$scope', '$rootScope', '$location', funct
             Label: "First Name...",
             ToolTip: "Please provide us with your first name",
             FieldType: 1,
-            CssClass: "1",
             FieldRank: 1,
             LookupType: 0,
-            SystemDataType: "",
             ReadOnly: false,
             FieldMask: "",
             Placeholder: "your name here",
             FieldValidations: [
                 {
                     FieldId: "FirstName",
-                    ValidationType: 1,
-                    ValidationValue: "",
-                    ValidationMessage: "Required"
+                    ValidationType: 20,
+                    ValidationValue: "10",
+                    ValidationMessage: "Date invalid"
                 },
                 //{
                 //    FieldId: "FirstName",
@@ -43,18 +41,18 @@ mainApp.controller('mainController', ['$scope', '$rootScope', '$location', funct
                 //    ValidationValue: "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}",
                 //    ValidationMessage: "Regex"
                 //},
-                {
-                    FieldId: "FirstName",
-                    ValidationType: 5,
-                    ValidationValue: "3",
-                    ValidationMessage: "MinValue"
-                },
-                {
-                    FieldId: "FirstName",
-                    ValidationType: 6,
-                    ValidationValue: "8",
-                    ValidationMessage: "MaxValue"
-                }
+                //{
+                //    FieldId: "FirstName",
+                //    ValidationType: 15,
+                //    ValidationValue: "3",
+                //    ValidationMessage: "RSA Idnumber"
+                //},
+                //{
+                //    FieldId: "FirstName",
+                //    ValidationType: 6,
+                //    ValidationValue: "8",
+                //    ValidationMessage: "MaxValue"
+                //}
             ]
         }
     }
@@ -200,9 +198,10 @@ mainApp.directive('dynvalid', ['$parse', function dynvalid($parse) {
                             {
                                 if (modelValue) {
                                     var range = val.ValidationValue.replace("[", "").replace("]", "").split(",");
-                                    if (parseFloat(modelValue) < parseFloat(range[0]) || parseFloat(modelValue) > parseFloat(range[0]))
+                                    if (isNaN(modelValue) || parseFloat(modelValue) < parseFloat(range[0]) || parseFloat(modelValue) > parseFloat(range[1])) {
                                         scope.validationMessage = val.ValidationMessage;
-                                    return false;
+                                        return false;
+                                    }
                                 }
                                 break;
                             }
