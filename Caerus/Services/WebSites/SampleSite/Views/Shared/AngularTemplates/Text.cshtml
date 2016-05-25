@@ -1,0 +1,12 @@
+﻿
+<script type="text/ng-template" id="dyn-field-text">
+    <ng-form name="{{innerForm}}">
+        <label>{{field.Label}}</label>
+        <input type="text" name="{{field.FieldId}}" ng-model="field.FieldValue" ng-class="{'form-control' : true }" ng-readonly="field.ReadOnly" placeholder="{{field.Placeholder}}"
+              data-dynvalid />
+        <span>
+            <span ng-show="frm{{field.FieldId}}.{{field.FieldId}}.$error.dynvalid">{{validationMessage}}</span>
+        </span>
+    </ng-form>
+</script>
+

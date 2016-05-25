@@ -36,5 +36,7 @@ namespace Caerus.Common.Modules.FieldMapping.ViewModels
         public bool ReadOnly { get; set; }
         public string FieldMask { get; set; }
 
+        public string Placeholder { get; set; }
+
     }
 }

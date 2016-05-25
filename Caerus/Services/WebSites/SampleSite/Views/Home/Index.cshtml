@@ -8,9 +8,15 @@
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
-<div class="row">
+<div class="row" data-ng-controller="mainController">
     <div class="col-md-4">
         <h2>Getting started</h2>
+        <form name="outerForm" novalidate>
+            <dynamicctrl field="MyValue.Field"></dynamicctrl>
+            <input type="submit" ng-disabled="outerForm.$invalid" />
+        </form>
+
+      
         <p>
             ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
             enables a clean separation of concerns and gives you full control over markup

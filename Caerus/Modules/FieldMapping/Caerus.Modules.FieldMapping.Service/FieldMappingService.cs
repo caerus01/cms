@@ -327,9 +327,6 @@ namespace Caerus.Modules.FieldMapping.Service
                         return value.Length >= Convert.ToInt32(validationValue);
                     case FieldValidationTypes.MaxLength: // – Makes the element require a given maxmimum length.
                         return value.Length <= Convert.ToInt32(validationValue);
-                    case FieldValidationTypes.RangeLength: // – Makes the element require a given value length range.
-                        var range = validationValue.Replace("[", string.Empty).Replace("]", string.Empty).Split(',');
-                        return value.Length >= Convert.ToInt32(range[0]) && value.Length <= Convert.ToInt32(range[1]);
                     case FieldValidationTypes.MinValue: // – Makes the element require a given minimum.
                         return Convert.ToDecimal(value) >= Convert.ToDecimal(validationValue);
                     case FieldValidationTypes.MaxValue: // – Makes the element require a given maximum.
@@ -389,7 +386,7 @@ namespace Caerus.Modules.FieldMapping.Service
                         }
                     case FieldValidationTypes.Regex:
                         return Regex.IsMatch(value, validationValue);
-                    case FieldValidationTypes.RsaIdNumber:
+                    case FieldValidationTypes.IdentificationNumber:
                         return IdNumberTools.IdNumberValid(value);
                 }
             }

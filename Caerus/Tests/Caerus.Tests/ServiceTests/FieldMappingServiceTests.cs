@@ -30,7 +30,7 @@ namespace Caerus.Tests.ServiceTests
         {
             _session.FieldMappingService.SaveEntityFields(new DynamicFieldReplyViewModel()
             {
-                OwningEntityRef = 1,
+                OwningEntityRef = 2,
                 OwningType = OwningTypes.Client,
                 Fields = new List<FieldItemModel>()
                 {
@@ -39,6 +39,12 @@ namespace Caerus.Tests.ServiceTests
                         FieldId = "FirstName",
                         OwningEntityType = 1,
                         FieldValue = "Test"
+                    },
+                    new FieldItemModel()
+                    {
+                        FieldId = "DateOfBirth",
+                        OwningEntityType = 1,
+                        FieldValue = DateTime.Now
                     },
                     new FieldItemModel()
                     {

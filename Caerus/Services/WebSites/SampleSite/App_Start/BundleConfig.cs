@@ -11,6 +11,17 @@ namespace SampleSite
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                      "~/Scripts/angular.js",
+                       "~/Scripts/angular-route.js",
+                        "~/Scripts/angular-resource.js"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/myapp").Include(
+                 "~/Scripts/demo/*.js"
+                 ));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
