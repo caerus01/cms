@@ -53,6 +53,10 @@
       <Project>{2d0e1fe1-0e59-41eb-abe8-a4742551b44f}</Project>
       <Name>Caerus.Modules.Configuration.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Modules\FieldMapping\Caerus.Modules.FieldMapping.Service\Caerus.Modules.FieldMapping.Service.csproj">
+      <Project>{9B483E0B-7BD4-42C6-AFA3-575AB3828096}</Project>
+      <Name>Caerus.Modules.FieldMapping.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Caerus.Common.Data\Caerus.Common.Data.csproj">
       <Project>{c1935f08-fbce-49d9-a5ca-df72865c87ae}</Project>
       <Name>Caerus.Common.Data</Name>

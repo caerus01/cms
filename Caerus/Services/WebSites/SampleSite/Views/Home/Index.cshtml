@@ -12,8 +12,10 @@
     <div class="col-md-4">
         <h2>Getting started</h2>
         <form name="outerForm" novalidate>
-            <dynamicctrl field="MyValue.Field"></dynamicctrl>
-            <input type="submit" ng-disabled="outerForm.$invalid" />
+            <div ng-repeat="item in DataModel.Fields">
+                <dynamicctrl field="item"></dynamicctrl>    
+            </div>
+            <input type="submit" ng-disabled="outerForm.$invalid"/>
         </form>
 
       

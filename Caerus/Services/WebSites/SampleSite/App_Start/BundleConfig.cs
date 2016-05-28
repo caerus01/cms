@@ -9,13 +9,17 @@ namespace SampleSite
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/toastr.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/Scripts/angular.js",
-                       "~/Scripts/angular-route.js",
-                        "~/Scripts/angular-resource.js"
+                      "~/Scripts/angular-route.js",
+                      "~/Scripts/angular-resource.js",
+                      "~/Scripts/angular-ui/ui-bootstrap.js",
+                      "~/Scripts/angular-ui/ui-bootstrap-tpls.js"
+
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/myapp").Include(
@@ -36,7 +40,8 @@ namespace SampleSite
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/toastr.css"));
         }
     }
 }

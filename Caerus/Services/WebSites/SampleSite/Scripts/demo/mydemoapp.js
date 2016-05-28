@@ -1,105 +1,204 @@
-﻿var mainApp = angular.module('mainApp', ['ngRoute', 'ngResource']);     //Define the main module
-mainApp.controller('mainController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
-    $scope.MyValue = {
-        Field: {
-            FieldValue: "Piet Boomklim",
-            OwningType: 0,
-            OwningEntityType: 1,
-            View: 1,
-            Sequence: 1,
-            FieldId: "FirstName",
-            Label: "First Name...",
-            ToolTip: "Please provide us with your first name",
-            FieldType: 1,
-            FieldRank: 1,
-            LookupType: 0,
-            ReadOnly: false,
-            FieldMask: "",
-            Placeholder: "your name here",
-            FieldValidations: [
-                {
-                    FieldId: "FirstName",
-                    ValidationType: 20,
-                    ValidationValue: "10",
-                    ValidationMessage: "Date invalid"
-                },
-                //{
-                //    FieldId: "FirstName",
-                //    ValidationType: 2,
-                //    ValidationValue: "5",
-                //    ValidationMessage: "Min length of 5"
-                //},
-                //{
-                //    FieldId: "FirstName",
-                //    ValidationType: 3,
-                //    ValidationValue: "19",
-                //    ValidationMessage: "Max length of 10"
-                //},
-                //{
-                //    FieldId: "FirstName",
-                //    ValidationType: 4,
-                //    ValidationValue: "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}",
-                //    ValidationMessage: "Regex"
-                //},
-                //{
-                //    FieldId: "FirstName",
-                //    ValidationType: 15,
-                //    ValidationValue: "3",
-                //    ValidationMessage: "RSA Idnumber"
-                //},
-                //{
-                //    FieldId: "FirstName",
-                //    ValidationType: 6,
-                //    ValidationValue: "8",
-                //    ValidationMessage: "MaxValue"
-                //}
-            ]
+﻿var mainApp = angular.module('mainApp', ['ngRoute', 'ngResource', 'ui.bootstrap']);     //Define the main module
+mainApp.controller('baseController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+
+    var self = $scope;
+    self.context = new context($scope);
+    //#region Members
+    $scope.Message = "";
+    $scope.ReplyStatus = 0;
+
+    $scope.ClearMessage = function () {
+        $scope.ReplyStatus = 0;
+    };
+
+    $scope.GoBack = function () {
+        window.history.back();
+    }
+    $scope.safeApply = function (fn) {
+        if (!this.$root) {
+            this.$apply(fn);
+            return;
+        }
+        var phase = this.$root.$$phase;
+        if (phase == '$apply' || phase == '$digest') {
+            if (fn && (typeof (fn) === 'function')) {
+                fn();
+            }
+        } else {
+            this.$apply(fn);
+        }
+    };
+
+    self.ApplyScope = function () {
+        $scope.safeApply();
+    }
+
+
+    self.GetURLParameter = function (name) {
+        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null
+    }
+
+    //#endregion
+
+
+    self.ExecAjax = function (customcall) {
+        $rootScope.CriticalFail = false;
+        //set default objects
+        if (customcall.before == undefined) {
+            customcall.before = function (xhr, settings) {
+                $scope.ClearMessage();
+                $rootScope.IsLoading = true;
+                self.ApplyScope();
+            };
+        }
+        if (customcall.complete == undefined) {
+            customcall.complete = function () {
+                $rootScope.IsLoading = false;
+                self.ApplyScope();
+            };
+        }
+        if (customcall.error == undefined) {
+            customcall.error = function (xhr, textStatus, errorContent) {
+                $scope.ClearMessage();
+                if (xhr && xhr.status && xhr.status >= 500) {
+                    //self.context.DisplayError("Fiddle sticks... A server error has occurred");
+                    self.ApplyScope();
+                    return;
+                }
+                if (xhr && xhr.status && xhr.status == 404) {
+                    //self.context.DisplayError("Fiddle sticks... Your request could not be found");
+                    self.ApplyScope();
+                    return;
+                }
+
+                //self.context.DisplayError("Fiddle sticks... A unknown error has occurred");
+                self.ApplyScope();
+                return;
+            };
+        }
+        if (customcall.customerror == undefined) {
+            customcall.customerror = function (result) {
+                if (result.hasOwnProperty('ReplyStatus')) {
+                    $scope.ReplyStatus = result.ReplyStatus;
+                }
+                if (result.hasOwnProperty('ReplyStatus')) {
+                    if (result.ReplyStatus > 0) {
+                        self.context.DisplayError("Fiddle sticks... " + result.ReplyMessage);
+                    }
+                }
+                self.ApplyScope();
+            };
+        }
+        var call = new self.context.MappedCall(customcall);
+        call.callback = arguments.callee.caller;
+        self.context.ExecCustomCall(call);
+    };
+
+    self.MapObject = function (source, destination) {
+        for (var i = 0; i < Object.getOwnPropertyNames(destination).length; i++) {
+            if (source != undefined)
+                for (var j = 0; j < Object.getOwnPropertyNames(source).length; j++) {
+                    if (Object.getOwnPropertyNames(destination)[i] == Object.getOwnPropertyNames(source)[j]) {
+                        var func = source[Object.getOwnPropertyNames(destination)[i]];
+                        if (func != undefined && func != null) {
+                            destination[Object.getOwnPropertyNames(destination)[i]] = source[Object.getOwnPropertyNames(source)[j]];
+                            continue;
+                        }
+                    }
+                }
         }
     }
+
+    self.DisplayError = function (title, message) {
+        self.context.DisplayError(title, message);
+    },
+    self.DisplayMessage = function (title, message) {
+        self.context.DisplayMessage(title, message);
+    },
+    self.DisplaySuccess = function (title, message) {
+        self.context.DisplaySuccess(title, message);
+    },
+    self.DisplayWarning = function (title, message) {
+        self.context.DisplayWarning(title, message);
+    }
+
+    self.DisplayConfirmationDialog = function (title, message, closefunction) {
+        self.context.DisplayConfirmationDialog(title, message, closefunction);
+    };
+    self.DisplayErrorDialog = function (title, message, okfunction, buttonText) {
+        self.context.DisplayErrorDialog(title, message, okfunction, buttonText);
+    };
+    self.DisplayOkCancelConfirmationDialog = function (title, message, okfunction, cancelfunction, oktext, canceltext) {
+        self.context.DisplayOkCancelConfirmationDialog(title, message, okfunction, cancelfunction, oktext, canceltext);
+    };
+
+
+    //#endregion 
+
 }]);
-mainApp.directive('dynamicctrl', ['$compile', '$location', function ($compile, $location) {
+
+mainApp.controller('mainController', ['$scope', '$rootScope', '$location', '$controller', function ($scope, $rootScope, $location, $controller) {
+    angular.extend(this, $controller('baseController', { $scope: $scope, $rootScope: $rootScope, $location: $location }));
+
+    $scope.DataModel = {
+        Fields: []
+    }
+
+    $scope.GetFields = function () {
+        try {
+            $scope.ExecAjax({
+                url: "/api/Fields/GetFields",
+                success: function (result) {
+                    $scope.DataModel.Fields = result.Fields;
+                }
+            });
+        } catch (e) {
+            $rootScope.IsLoading = false;
+            $scope.DisplayError(e);
+        }
+    }
+    $scope.GetFields();
+}]);
+mainApp.directive('dynamicctrl', ['$compile', '$location', '$http', function ($compile, $location, $http) {
     return {
         restrict: 'E',
         //replace: true,
-        template: '<div class="dynamic-field" ng-include="getTemplateUrl()"></div>',
+        template: '<div class="dynamic-field" ng-include="\'dyn-field\'"></div>',
         scope: {
             field: "="
         },
         link: function (scope, element, attrs) {
             scope.validationMessage = "";
             scope.innerForm = "frm" + scope.field.FieldId;
-            scope.getTemplateUrl = function () {
-                var type = "text";
-                switch (scope.field.FieldType) {
-                    case 1:
-                    default:
-                        {
-                            type = 'text';
-                            break;
-                        }
-                    case 2:
-                        {
-                            type = 'select';
-                            break;
-                        }
-                    case 3:
-                        {
-                            type = 'autocomplete';
-                            break;
-                        }
-                    case 4:
-                        {
-                            type = 'datepicker';
-                            break;
-                        }
-                    case 5:
-                        {
-                            type = 'checkbox';
-                            break;
-                        }
-                }
-                return 'dyn-field-' + type;
+            scope.dateOptions = {
+                dateDisabled: false,
+                formatYear: 'yy',
+                maxDate: new Date(2020, 5, 22),
+                minDate: new Date(),
+                startingDay: 1
+            };
+            scope.dateFormat = 'dd-MMMM-yyyy';
+            scope.getRemoteLookupValue = function (val) {
+                return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
+                    params: {
+                        address: val,
+                        sensor: false
+                    }
+                }).then(function (response) {
+                    return response.data.results.map(function (item) {
+                        return item.formatted_address;
+                    });
+                });
             }
+
+            scope.open = function () {
+                scope.popup.opened = true;
+            };
+
+            scope.popup = {
+                opened: false
+            };
+
         },
         controller: function ($scope) {
         }
@@ -289,7 +388,7 @@ mainApp.directive('dynvalid', ['$parse', function dynvalid($parse) {
                         case 17:
                             {
                                 if (modelValue)
-                                    if (isNaN(modelValue) || _calculateAge(modelValue) < parseInt(val.ValidationValue)) {
+                                    if (isNaN(Date.parse(modelValue)) || _calculateAge(new Date(modelValue)) < parseInt(val.ValidationValue)) {
                                         scope.validationMessage = val.ValidationMessage;
                                         return false;
                                     }
@@ -298,7 +397,7 @@ mainApp.directive('dynvalid', ['$parse', function dynvalid($parse) {
                         case 18:
                             {
                                 if (modelValue)
-                                    if (isNaN(modelValue) || _calculateAge(modelValue) > parseInt(val.ValidationValue)) {
+                                    if (isNaN(Date.parse(modelValue)) || _calculateAge(new Date(modelValue)) > parseInt(val.ValidationValue)) {
                                         scope.validationMessage = val.ValidationMessage;
                                         return false;
                                     }
@@ -307,7 +406,7 @@ mainApp.directive('dynvalid', ['$parse', function dynvalid($parse) {
                         case 19:
                             {
                                 if (modelValue)
-                                    if (isNaN(Date.parse(modelValue)) || _monthDiff(Date.parse(modelValue), new Date()) < parseInt(val.ValidationValue)) {
+                                    if (isNaN(Date.parse(modelValue)) || _monthDiff(new Date(modelValue), new Date()) < parseInt(val.ValidationValue)) {
                                         scope.validationMessage = val.ValidationMessage;
                                         return false;
                                     }
@@ -316,7 +415,7 @@ mainApp.directive('dynvalid', ['$parse', function dynvalid($parse) {
                         case 20:
                             {
                                 if (modelValue)
-                                    if (isNaN(Date.parse(modelValue)) || _monthDiff(Date.parse(modelValue), new Date()) > parseInt(val.ValidationValue)) {
+                                    if (isNaN(Date.parse(modelValue)) || _monthDiff(new Date(modelValue), new Date()) > parseInt(val.ValidationValue)) {
                                         scope.validationMessage = val.ValidationMessage;
                                         return false;
                                     }
@@ -329,6 +428,3 @@ mainApp.directive('dynvalid', ['$parse', function dynvalid($parse) {
         }
     };
 }]);
-//if (/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}/.test(modelValue)) {
-
-//}

@@ -8,6 +8,7 @@ using Caerus.Common.Extentions;
 using Caerus.Common.Modules.Session.Interfaces;
 using Caerus.Common.Stub;
 using Caerus.Common.Stub.Services;
+using Caerus.Modules.FieldMapping.Service;
 
 namespace Caerus.Common.Auth.DependancyInjector
 {
@@ -27,7 +28,7 @@ namespace Caerus.Common.Auth.DependancyInjector
                 }
                 case ModuleTypes.FieldMapping:
                 {
-                    return (T)(object)new StubFieldMappingService();
+                    return (T)(object)new FieldMappingService(session);
                 }
                 case ModuleTypes.Client:
                 {

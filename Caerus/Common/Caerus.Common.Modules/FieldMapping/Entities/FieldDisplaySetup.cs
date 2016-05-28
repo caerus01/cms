@@ -27,6 +27,7 @@ namespace Caerus.Common.Modules.FieldMapping.Entities
         public Nullable<int> LookupType { get; set; }
         public int ReadOnly { get; set; }
         public string FieldMask { get; set; }
+        public string Placeholder { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
         public string UserCreated { get; set; }

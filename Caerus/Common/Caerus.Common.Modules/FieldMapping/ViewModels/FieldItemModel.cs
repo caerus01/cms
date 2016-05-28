@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Caerus.Common.Modules.Client.Enums;
 using Caerus.Common.Modules.FieldMapping.Enums;
 using Caerus.Common.Modules.Lookup.Enums;
+using Caerus.Common.Modules.Lookup.ViewModels;
 using Caerus.Common.ViewModels;
 
 namespace Caerus.Common.Modules.FieldMapping.ViewModels
@@ -15,10 +16,12 @@ namespace Caerus.Common.Modules.FieldMapping.ViewModels
         public FieldItemModel()
         {
             FieldValidations = new List<FieldValidationModel>();
+            LookupList = new List<LookupViewModel>();
         }
 
 
         public List<FieldValidationModel> FieldValidations { get; set; }
+        public List<LookupViewModel> LookupList { get; set; } 
         public dynamic FieldValue { get; set; }
 
         public OwningTypes OwningType { get; set; }
