@@ -147,9 +147,26 @@ mainApp.controller('mainController', ['$scope', '$rootScope', '$location', '$con
     $scope.GetFields = function () {
         try {
             $scope.ExecAjax({
-                url: "/api/Fields/GetFields",
+                url: "/api/Fields/GetFields?clientRefId="+ 3,
                 success: function (result) {
-                    $scope.DataModel.Fields = result.Fields;
+                    $scope.DataModel = result;
+                }
+            });
+        } catch (e) {
+            $rootScope.IsLoading = false;
+            $scope.DisplayError(e);
+        }
+    }
+
+
+    $scope.SaveFields = function () {
+        try {
+            $scope.ExecAjax({
+                url: "/api/Fields/SaveFields",
+                type: "POST",
+                data: angular.toJson($scope.DataModel),
+                success: function () {
+                    $scope.DisplaySuccess("Yippee");
                 }
             });
         } catch (e) {

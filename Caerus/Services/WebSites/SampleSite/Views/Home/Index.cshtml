@@ -15,7 +15,7 @@
             <div ng-repeat="item in DataModel.Fields">
                 <dynamicctrl field="item"></dynamicctrl>    
             </div>
-            <input type="submit" ng-disabled="outerForm.$invalid"/>
+            <input type="submit" ng-disabled="outerForm.$invalid" ng-click="SaveFields()"/>
         </form>
 
       

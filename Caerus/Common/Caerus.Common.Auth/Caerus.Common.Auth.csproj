@@ -49,6 +49,10 @@
       <Project>{87ea423a-09e9-405d-a183-516821ca2835}</Project>
       <Name>Caerus.Modules.Authentication.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Client\Caerus.Modules.Client.Service\Caerus.Modules.Client.Service.csproj">
+      <Project>{fd7f61f2-4bed-42ed-aaf1-b08b3b62c127}</Project>
+      <Name>Caerus.Modules.Client.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Modules\Configuration\ConfigurationService\Caerus.Modules.Configuration.Service.csproj">
       <Project>{2d0e1fe1-0e59-41eb-abe8-a4742551b44f}</Project>
       <Name>Caerus.Modules.Configuration.Service</Name>
@@ -56,6 +60,10 @@
     <ProjectReference Include="..\..\Modules\FieldMapping\Caerus.Modules.FieldMapping.Service\Caerus.Modules.FieldMapping.Service.csproj">
       <Project>{9B483E0B-7BD4-42C6-AFA3-575AB3828096}</Project>
       <Name>Caerus.Modules.FieldMapping.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Lookup\LookupService\Caerus.Modules.Lookup.Service.csproj">
+      <Project>{D8F46400-8DCD-4C38-830D-A1CAE2E328AD}</Project>
+      <Name>Caerus.Modules.Lookup.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\Caerus.Common.Data\Caerus.Common.Data.csproj">
       <Project>{c1935f08-fbce-49d9-a5ca-df72865c87ae}</Project>

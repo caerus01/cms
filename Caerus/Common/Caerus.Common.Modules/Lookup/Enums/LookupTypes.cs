@@ -8,5 +8,7 @@ namespace Caerus.Common.Modules.Lookup.Enums
 {
     public enum LookupTypes
     {
+        ClientTypes = 1,
+
     }
 }

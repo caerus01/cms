@@ -8,7 +8,9 @@ using Caerus.Common.Extentions;
 using Caerus.Common.Modules.Session.Interfaces;
 using Caerus.Common.Stub;
 using Caerus.Common.Stub.Services;
+using Caerus.Modules.Client.Service;
 using Caerus.Modules.FieldMapping.Service;
+using Caerus.Modules.Lookup.Service;
 
 namespace Caerus.Common.Auth.DependancyInjector
 {
@@ -32,7 +34,7 @@ namespace Caerus.Common.Auth.DependancyInjector
                 }
                 case ModuleTypes.Client:
                 {
-                    return (T)(object)new StubClientService();
+                    return (T)(object)new ClientService(session);
                 }
                 case ModuleTypes.Notification:
                 {
@@ -41,6 +43,10 @@ namespace Caerus.Common.Auth.DependancyInjector
                 case ModuleTypes.Audit:
                 {
                     return (T)(object)new StubAuditService();
+                }
+                case ModuleTypes.Lookup:
+                {
+                    return (T)(object)new LookupService(session);
                 }
             }
             throw new Exception("Service not defined of type " + module.ToEnumerationDescription());

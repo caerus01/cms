@@ -14,7 +14,8 @@ namespace Caerus.Common.Enums
         Client = 3,
         Audit = 4,
         FieldMapping = 5,
-        GeoCode = 6
+        GeoCode = 6,
+        Lookup = 7
 
     }
 }

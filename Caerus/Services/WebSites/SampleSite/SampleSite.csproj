@@ -1036,12 +1036,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\DynamicFields\dynamic_field_text.cshtml" />
-    <Content Include="Views\DynamicFields\dynamic_field_select.cshtml" />
-    <Content Include="Views\DynamicFields\dynamic_field_autocomplete.cshtml" />
-    <Content Include="Views\DynamicFields\dynamic_field_datepicker.cshtml" />
-    <Content Include="Views\DynamicFields\dynamic_field_checkbox.cshtml" />
-    <Content Include="Views\Shared\AngularTemplates\Text.cshtml" />
     <Content Include="Views\Shared\AngularTemplates\Dynamic.cshtml" />
   </ItemGroup>
   <ItemGroup>

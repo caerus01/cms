@@ -11,6 +11,7 @@ using Caerus.Common.Modules.Authentication.Interfaces;
 using Caerus.Common.Modules.Client.Interfaces;
 using Caerus.Common.Modules.Configuration.Interfaces;
 using Caerus.Common.Modules.FieldMapping.Interfaces;
+using Caerus.Common.Modules.Lookup.Interfaces;
 using Caerus.Common.Modules.Notification.Interfaces;
 using Caerus.Common.Modules.Session;
 using Caerus.Common.Modules.Session.Interfaces;
@@ -103,8 +104,13 @@ namespace Caerus.Common.Auth.Session
             get { return _notificationService ?? (_notificationService = CaerusSessionInjectorService.GetService<INotificationService>(this, ModuleTypes.Notification, IsAuthenticated)); }
             set { _notificationService = value; }
         }
-       
 
+        private ILookupService _lookupService;
+        public ILookupService LookupService
+        {
+            get { return _lookupService ?? (_lookupService = CaerusSessionInjectorService.GetService<ILookupService>(this, ModuleTypes.Lookup, IsAuthenticated)); }
+            set { _lookupService = value; }
+        }
         #endregion
 
         #region Logger

@@ -117,6 +117,8 @@
     <Compile Include="FieldMapping\ViewModels\DynamicFieldResponseViewModel.cs" />
     <Compile Include="FieldMapping\ViewModels\FieldValidationModel.cs" />
     <Compile Include="Lookup\Enums\LookupTypes.cs" />
+    <Compile Include="Lookup\Interfaces\ILookupRepository.cs" />
+    <Compile Include="Lookup\Interfaces\ILookupService.cs" />
     <Compile Include="Lookup\ViewModels\LookupListViewModel.cs" />
     <Compile Include="Lookup\ViewModels\LookupViewModel.cs" />
     <Compile Include="Notification\Enums\DeliveryTypes.cs" />
@@ -139,7 +141,6 @@
     <Folder Include="Geocode\Enums\" />
     <Folder Include="Geocode\ViewModels\" />
     <Folder Include="Lookup\Entities\" />
-    <Folder Include="Lookup\Interfaces\" />
     <Folder Include="Notification\Entities\" />
     <Folder Include="Products\" />
   </ItemGroup>

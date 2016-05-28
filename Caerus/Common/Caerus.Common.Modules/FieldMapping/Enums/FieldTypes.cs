@@ -13,7 +13,8 @@ namespace Caerus.Common.Modules.FieldMapping.Enums
         AutoComplete = 3,
         DatePicker = 4,
         CheckBox = 5,
-        TextArea = 6
+        TextArea = 6,
+        RadioButtonList = 7
 
     }
 }
