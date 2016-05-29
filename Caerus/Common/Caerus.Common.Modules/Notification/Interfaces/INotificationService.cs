@@ -13,7 +13,7 @@ namespace Caerus.Common.Modules.Notification.Interfaces
     {
         ReplyObject SubmitNotification(DeliveryTypes deliveryType, NotificationTypes notificationType, string recipient, Dictionary<string, string> tokens = null, bool sendInProcess = false);
 
-        ReplyObject SubmitNotificationNoTemplate(DeliveryTypes devType, string recipient, string messageBody, string messageSubject = "", Dictionary<string, string> tokens = null, bool sendInProcess = false);
+        ReplyObject SubmitNotificationNoTemplate(DeliveryTypes deliveryType, string recipient, string messageBody, string messageSubject = "", Dictionary<string, string> tokens = null, bool sendInProcess = false);
 
         bool IsNotificationActive(DeliveryTypes deliveryType, NotificationTypes notificationType);
 

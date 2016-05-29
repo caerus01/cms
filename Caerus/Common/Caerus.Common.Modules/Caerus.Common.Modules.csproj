@@ -124,17 +124,20 @@
     <Compile Include="Lookup\ViewModels\LookupViewModel.cs" />
     <Compile Include="Notification\Enums\DeliveryTypes.cs" />
     <Compile Include="Notification\Enums\NotificationTypes.cs" />
+    <Compile Include="Notification\Enums\SmsErrorTypes.cs" />
+    <Compile Include="Notification\Interfaces\INotiifacationRepository.cs" />
     <Compile Include="Notification\Interfaces\Providers\IEmailProvider.cs" />
     <Compile Include="Notification\Interfaces\INotificationService.cs" />
     <Compile Include="Notification\Interfaces\Providers\IPushProvider.cs" />
     <Compile Include="Notification\Interfaces\Providers\IRealTimeProvider.cs" />
     <Compile Include="Notification\Interfaces\Providers\ISmsProvider.cs" />
+    <Compile Include="Notification\ViewModel\SmsReplyObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Session\Interfaces\ICaerusSession.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Accounting\" />
-    <Folder Include="BankAccount\" />
+    <Folder Include="BackOffice\" />
     <Folder Include="Configuration\Enums\" />
     <Folder Include="Configuration\ViewModels\" />
     <Folder Include="Document\" />
