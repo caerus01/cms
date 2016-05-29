@@ -245,8 +245,6 @@ mainApp.directive('dynamicctrl', ['$compile', '$location', '$http', function ($c
         }
     };
 }]);
-
-
 mainApp.directive('dynvalid', ['$parse', function dynvalid($parse) {
     return {
         require: '?ngModel',
