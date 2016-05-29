@@ -147,7 +147,7 @@ mainApp.controller('mainController', ['$scope', '$rootScope', '$location', '$con
     $scope.GetFields = function () {
         try {
             $scope.ExecAjax({
-                url: "/api/Fields/GetFields?clientRefId="+ 3,
+                url: "/api/Fields/GetFields?clientRefId=" + 4,
                 success: function (result) {
                     $scope.DataModel = result;
                 }
@@ -185,15 +185,39 @@ mainApp.directive('dynamicctrl', ['$compile', '$location', '$http', function ($c
             field: "="
         },
         link: function (scope, element, attrs) {
+            switch (scope.field.SystemDataType) {
+                case 1:
+                case 3:
+                    {
+                        scope.field.FieldValue = parseInt(scope.field.FieldValue);
+                        break;
+                    }
+                case 2:
+                    {
+                        scope.field.FieldValue = parseFloat(scope.field.FieldValue);
+                        break;
+                    }
+                case 4:
+                    {
+                        scope.field.FieldValue = new Date(scope.field.FieldValue);
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
             scope.validationMessage = "";
             scope.innerForm = "frm" + scope.field.FieldId;
             scope.dateOptions = {
                 dateDisabled: false,
                 formatYear: 'yy',
-                maxDate: new Date(2020, 5, 22),
-                minDate: new Date(),
                 startingDay: 1
             };
+            scope.timeZoneOptions = {
+                timezone: 'UTC'
+            }
             scope.dateFormat = 'dd-MMMM-yyyy';
             scope.getRemoteLookupValue = function (val) {
                 return $http.get('//maps.googleapis.com/maps/api/geocode/json', {

@@ -17,8 +17,14 @@ namespace Caerus.Common.Extentions
 
             if (Nullable.GetUnderlyingType(target.PropertyType) == null && value == null)
                 return;
-            if (!target.PropertyType.IsInstanceOfType(value))
+            if (target.PropertyType == typeof(int) || Nullable.GetUnderlyingType(target.PropertyType) == typeof(int))
+            {
+                target.SetValue(destination, (int) value);
                 return;
+            }
+            if (!target.PropertyType.IsInstanceOfType(value) && !Nullable.GetUnderlyingType(target.PropertyType).IsInstanceOfType(value))
+                return;
+            
 
             target.SetValue(destination, value);
         }

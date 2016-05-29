@@ -3,6 +3,7 @@ using Caerus.Common.Modules.Authentication.Interfaces;
 using Caerus.Common.Modules.Client.Interfaces;
 using Caerus.Common.Modules.Configuration.Interfaces;
 using Caerus.Common.Modules.FieldMapping.Interfaces;
+using Caerus.Common.Modules.Lookup.Interfaces;
 using Caerus.Common.Modules.Notification.Interfaces;
 
 namespace Caerus.Common.Modules.Session.Interfaces
@@ -18,6 +19,7 @@ namespace Caerus.Common.Modules.Session.Interfaces
         IClientService ClientService { get; set; }
         IFieldMappingService FieldMappingService { get; set; }
         INotificationService NotificationService { get; set; }
+        ILookupService LookupService { get; set; }
 
         ICaerusLogger Logger { get; set; }
     }

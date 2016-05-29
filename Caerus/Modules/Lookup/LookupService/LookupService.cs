@@ -23,7 +23,7 @@ namespace Caerus.Modules.Lookup.Service
 
         private List<LookupViewModel> GetEnumList<T>()
         {
-            return (from dynamic item in EnumExtensions.GetMeAlistOf<T>()
+            return (from Enum item in EnumExtensions.GetMeAlistOf<T>()
                     select new LookupViewModel()
                     {
                         Key = item.AsInt(),
@@ -43,7 +43,7 @@ namespace Caerus.Modules.Lookup.Service
                     {
                         case LookupTypes.ClientTypes:
                             {
-                                result.LookupList = GetEnumList<ClientEntityTypes>();
+                                result.LookupList = GetEnumList<ClientTypes>();
                                 break;
                             }
                     }

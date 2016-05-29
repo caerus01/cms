@@ -11,6 +11,7 @@ using Caerus.Common.Modules.FieldMapping.Entities;
 using Caerus.Common.Modules.FieldMapping.Enums;
 using Caerus.Common.Modules.FieldMapping.Interfaces;
 using Caerus.Common.Modules.FieldMapping.ViewModels;
+using Caerus.Common.Modules.Lookup.Enums;
 using Caerus.Common.Modules.Session.Interfaces;
 using Caerus.Common.Stub.BaseServices;
 using Caerus.Common.Stub.Services;
@@ -91,12 +92,19 @@ namespace Caerus.Modules.FieldMapping.Service
                         if (item.EntityObject != null)
                         {
                             var prop = item.EntityObject.GetType().GetProperty(fitem.FieldId);
-                            var val = "";
                             if (prop != null)
                             {
-                                val = prop.GetValue(item.EntityObject) ?? "";
+                                try
+                                {
+                                    model.Value = prop.GetValue(item.EntityObject);;
+
+                                }
+                                catch (Exception)
+                                {
+                                    model.Value ="oops";
+                                }
                             }
-                            model.Value = val;
+                           
                         }
 
                         result.Add(model);
@@ -129,7 +137,10 @@ namespace Caerus.Modules.FieldMapping.Service
                         entityData.FirstOrDefault(
                             c => c.FieldId == item.FieldId && c.OwningEntityType == item.OwningEntityType);
                     if (data != null)
+                    {
                         model.FieldValue = data.Value;
+                        model.SystemDataType = data.SystemDataType;
+                    }
 
 
                     var vals = validations.Where(c => c.OwningEntityType == item.OwningEntityType).ToList();
@@ -143,6 +154,10 @@ namespace Caerus.Modules.FieldMapping.Service
                         });
                     }
 
+                    if (model.LookupType > 0 && FieldContstants.LookupFieldTypes.Contains(model.FieldType.AsInt()))
+                    {
+                        model.LookupList = _session.LookupService.GetLookupList(model.LookupType).LookupList;
+                    }
                     result.Fields.Add(model);
                 }
 
@@ -239,11 +254,11 @@ namespace Caerus.Modules.FieldMapping.Service
             try
             {
                 var qry = from t in viewModel.Fields
-                           select new FieldEntityViewModel
-                           {
-                               OwningEntityType = t.OwningEntityType,
-                               FieldId = t.FieldId
-                           };
+                          select new FieldEntityViewModel
+                          {
+                              OwningEntityType = t.OwningEntityType,
+                              FieldId = t.FieldId
+                          };
                 var list = qry.ToList();
                 var validations = _repository.GetFieldValidationsByEntityAndField(viewModel.OwningType, list);
 

@@ -4,6 +4,7 @@ using Caerus.Common.Modules.Authentication.Interfaces;
 using Caerus.Common.Modules.Client.Interfaces;
 using Caerus.Common.Modules.Configuration.Interfaces;
 using Caerus.Common.Modules.FieldMapping.Interfaces;
+using Caerus.Common.Modules.Lookup.Interfaces;
 using Caerus.Common.Modules.Notification.Interfaces;
 using Caerus.Common.Modules.Session.Interfaces;
 using Caerus.Common.Stub.Services;
@@ -51,7 +52,7 @@ namespace Caerus.Common.Stub.Sessions
         public IClientService ClientService { get; set; }
         public IFieldMappingService FieldMappingService { get; set; }
         public INotificationService NotificationService { get; set; }
-
+        public ILookupService LookupService { get; set; }
 
         #endregion
 

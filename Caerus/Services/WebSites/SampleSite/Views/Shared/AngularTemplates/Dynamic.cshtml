@@ -1,8 +1,9 @@
 ﻿
 <script type="text/ng-template" id="dyn-field">
     <ng-form name="{{innerForm}}">
-       
+
         <span ng-switch="field.FieldType">
+
             <span ng-switch-default>
                 <label class="control-label">{{field.Label}}</label>
                 <input type="text" name="{{field.FieldId}}" ng-model="field.FieldValue" ng-class="{'form-control' : true }" ng-readonly="field.ReadOnly"
@@ -34,7 +35,7 @@
                 <p class="input-group">
                     <input type="text" uib-datepicker-popup="{{dateFormat}}" is-open="popup.opened" datepicker-options="dateOptions" close-text="Close"
                            name="{{field.FieldId}}" ng-model="field.FieldValue" ng-class="{'form-control' : true }" ng-readonly="field.ReadOnly"
-                           placeholder="{{field.Placeholder}}" data-dynvalid uib-popover="{{field.ToolTip}}" popover-trigger="mouseenter" data-dynvalid />
+                           placeholder="{{field.Placeholder}}" data-dynvalid uib-popover="{{field.ToolTip}}" popover-trigger="mouseenter" data-dynvalid ng-model-options="timeZoneOptions" />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
@@ -49,20 +50,24 @@
                         {{field.Label}}
                     </label>
                 </div>
-            
+
                 <span ng-show="frm{{field.FieldId}}.{{field.FieldId}}.$error.dynvalid">{{validationMessage}}</span>
             </span>
             <span ng-switch-when="6">
                 <label class="control-label">{{field.Label}}</label>
                 <textarea name="{{field.FieldId}}" ng-model="field.FieldValue" ng-class="{'form-control' : true }" ng-readonly="field.ReadOnly"
-                          placeholder="{{field.Placeholder}}" data-dynvalid uib-popover="{{field.ToolTip}}" popover-trigger="mouseenter" data-dynvalid>
-                    <span ng-show="frm{{field.FieldId}}.{{field.FieldId}}.$error.dynvalid">{{validationMessage}}</span>
+                          placeholder="{{field.Placeholder}}" data-dynvalid uib-popover="{{field.ToolTip}}" popover-trigger="mouseenter" data-dynvalid />
+                <span ng-show="frm{{field.FieldId}}.{{field.FieldId}}.$error.dynvalid">{{validationMessage}}</span>
             </span>
             <span ng-switch-when="7">
-                <label class="control-label">{{field.Label}}</label>
+                <label class="control-label">
+                    {{field.Label}}
+                </label>
+                <br />
                 <div class="btn-group" ng-repeat="item in field.LookupList">
-                    <label class="btn btn-default" ng-model="field.FieldValue" uib-btn-radio="{{item.Key}}">{{item.Value}}</label>
+                    <label class="btn btn-primary" ng-model="field.FieldValue" uib-btn-radio="{{item.Key}}">{{item.Value}}</label>
                 </div>
+
             </span>
         </span>
     </ng-form>
