@@ -38,13 +38,13 @@ namespace Caerus.Common.Stub.Services
             return new ReplyObject();
         }
 
-        public ViewModels.ReplyObject GetNotificationTemplate()
+        public ViewModels.ReplyObject GetNotificationTemplate(long refId)
         {
             GlobalLogger.WrapStubInfo();
             return new ReplyObject();
         }
 
-        public ViewModels.ReplyObject SearchNotificationTemplates()
+        public ViewModels.ReplyObject SearchNotificationTemplates(int step, int size, string orderBy, bool order, string filter)
         {
             GlobalLogger.WrapStubInfo();
             return new ReplyObject();

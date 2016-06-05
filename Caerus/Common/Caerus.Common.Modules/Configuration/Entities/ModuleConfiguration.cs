@@ -16,5 +16,7 @@ namespace Caerus.Common.Modules.Configuration.Entities
         public int ServiceTypeId { get; set; }
         public Nullable<System.DateTime> DateCreated { get; set; }
         public System.DateTime DateModified { get; set; }
+        public string UserCreated { get; set; }
+        public string UserModified { get; set; }
     }
 }

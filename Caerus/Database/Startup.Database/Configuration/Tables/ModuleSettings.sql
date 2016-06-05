@@ -4,8 +4,8 @@
 	[SettingValue] [varchar](500) NULL,
 	[DateCreated] [datetime] NOT NULL DEFAULT getdate(),
 	[DateModified] [datetime] NOT NULL,
-	[UserCreated] [bigint] NOT NULL,
-	[UserModified] [bigint] NOT NULL,
+	[UserCreated] NVARCHAR(128) NOT NULL,
+	[UserModified] NVARCHAR(128) NOT NULL,
  CONSTRAINT [PK_ModuleSettings_1] PRIMARY KEY CLUSTERED 
 (
 	[ModuleId] ASC,

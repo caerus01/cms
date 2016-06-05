@@ -15,33 +15,33 @@ namespace Caerus.Modules.Notification.Service
         public ReplyObject SubmitNotification(DeliveryTypes deliveryType, NotificationTypes notificationType, string recipient,
             Dictionary<string, string> tokens = null, bool sendInProcess = false)
         {
-            throw new NotImplementedException();
+            return new ReplyObject();
         }
 
         public ReplyObject SubmitNotificationNoTemplate(DeliveryTypes deliveryType, string recipient, string messageBody,
             string messageSubject = "", Dictionary<string, string> tokens = null, bool sendInProcess = false)
         {
-            throw new NotImplementedException();
+            return new ReplyObject();
         }
 
         public bool IsNotificationActive(DeliveryTypes deliveryType, NotificationTypes notificationType)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public ReplyObject SaveNotificationTemplate()
         {
-            throw new NotImplementedException();
+            return new ReplyObject();
         }
 
-        public ReplyObject GetNotificationTemplate()
+        public ReplyObject GetNotificationTemplate(long refId)
         {
-            throw new NotImplementedException();
+            return new ReplyObject();
         }
 
-        public ReplyObject SearchNotificationTemplates()
+        public ReplyObject SearchNotificationTemplates(int step, int size, string orderBy, bool order, string filter)
         {
-            throw new NotImplementedException();
+            return new ReplyObject();
         }
 
         public ISmsProvider SmsProvider { get; private set; }

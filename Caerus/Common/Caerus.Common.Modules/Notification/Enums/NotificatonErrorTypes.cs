@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Caerus.Common.Modules.Notification.Enums
 {
-    public enum SmsErrorTypes
+    public enum NotificatonErrorTypes
     {
         //no error
         NoError = 0,

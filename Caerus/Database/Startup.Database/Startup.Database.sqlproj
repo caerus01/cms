@@ -82,6 +82,7 @@
     <Folder Include="FieldMapping" />
     <Folder Include="FieldMapping\Tables" />
     <Folder Include="Document\Tables" />
+    <Folder Include="Notification\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Configuration\ScalarFunctions\GetModuleSetting.sql" />
@@ -119,6 +120,8 @@
     <Build Include="Document\Tables\Documents.sql" />
     <Build Include="Lookup\Tables\lk_Banks.sql" />
     <Build Include="Lookup\Tables\lk_BankBranches.sql" />
+    <Build Include="Notification\Tables\NotificationSmsHistories.sql" />
+    <Build Include="Notification\Tables\NotificationReplyHistories.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Utils\ScalarFunctions\IsLeapYear.sql" />

@@ -19,6 +19,7 @@
     [UserCreated] NVARCHAR(128) NULL, 
     [UserModified] NVARCHAR(128) NULL, 
  [Placeholder] NVARCHAR(200) NULL, 
+    [OwningEntitySubType] INT NULL, 
     CONSTRAINT [PK_FieldDisplaySetups] PRIMARY KEY CLUSTERED 
 (
 	[RefId] ASC

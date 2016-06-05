@@ -18,7 +18,7 @@ namespace Caerus.Common.Modules.Configuration.Entities
         public string SettingValue { get; set; }
         public System.DateTime DateCreated { get; set; }
         public System.DateTime DateModified { get; set; }
-        public long UserCreated { get; set; }
-        public long UserModified { get; set; }
+        public string UserCreated { get; set; }
+        public string UserModified { get; set; }
     }
 }

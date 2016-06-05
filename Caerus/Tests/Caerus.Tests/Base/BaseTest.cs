@@ -36,9 +36,5 @@ namespace Caerus.Tests.Base
             
         }
 
-        public void Configuration(IAppBuilder app)
-        {
-            _session.AuthenticationService.ConfigureAuth(app);
-        }
     }
 }

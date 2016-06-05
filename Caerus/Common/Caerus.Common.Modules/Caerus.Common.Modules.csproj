@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\ViewModels\RegisterUserViewModel.cs" />
     <Compile Include="Client\Entities\Client.cs" />
     <Compile Include="Client\Entities\ClientAddressDetail.cs" />
     <Compile Include="Client\Entities\ClientAffordabilityDetail.cs" />
@@ -76,6 +77,8 @@
     <Compile Include="Client\Enums\GenderTypes.cs" />
     <Compile Include="Client\Enums\TitleTypes.cs" />
     <Compile Include="Client\Interfaces\IClientRepository.cs" />
+    <Compile Include="Configuration\Interfaces\IConfigurationRepository.cs" />
+    <Compile Include="Configuration\ViewModels\ModuleSettingViewModel.cs" />
     <Compile Include="FieldMapping\Enums\FieldContstants.cs" />
     <Compile Include="FieldMapping\Enums\SystemDataTypes.cs" />
     <Compile Include="FieldMapping\ViewModels\DynamicEntityViewModel.cs" />
@@ -123,8 +126,9 @@
     <Compile Include="Lookup\ViewModels\LookupListViewModel.cs" />
     <Compile Include="Lookup\ViewModels\LookupViewModel.cs" />
     <Compile Include="Notification\Enums\DeliveryTypes.cs" />
+    <Compile Include="Notification\Enums\NotificationSettingTypes.cs" />
     <Compile Include="Notification\Enums\NotificationTypes.cs" />
-    <Compile Include="Notification\Enums\SmsErrorTypes.cs" />
+    <Compile Include="Notification\Enums\NotificatonErrorTypes.cs" />
     <Compile Include="Notification\Interfaces\INotiifacationRepository.cs" />
     <Compile Include="Notification\Interfaces\Providers\IEmailProvider.cs" />
     <Compile Include="Notification\Interfaces\INotificationService.cs" />
@@ -139,7 +143,6 @@
     <Folder Include="Accounting\" />
     <Folder Include="BackOffice\" />
     <Folder Include="Configuration\Enums\" />
-    <Folder Include="Configuration\ViewModels\" />
     <Folder Include="Document\" />
     <Folder Include="Geocode\Entities\" />
     <Folder Include="Geocode\Enums\" />

@@ -56,4 +56,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ClientRefId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="90fa1f1f-aae5-4719-b7fd-7b95c255f838" ChangeDateTime="06/05/2016 19:11:22">
+    <Property Name="ElementName" Value="[dbo].[NotificationSmsHistories].[RefID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationSmsHistories]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RefId" />
+  </Operation>
 </Operations>

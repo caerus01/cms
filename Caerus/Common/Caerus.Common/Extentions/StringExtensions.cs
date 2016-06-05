@@ -262,6 +262,6 @@ namespace Caerus.Common.Extentions
             return value.EnumParse<T>(false);
         }
 
-       
+        
     }
 }

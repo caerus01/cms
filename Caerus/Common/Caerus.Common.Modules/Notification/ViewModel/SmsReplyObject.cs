@@ -10,6 +10,6 @@ namespace Caerus.Common.Modules.Notification.ViewModel
 {
    public class SmsReplyObject : ReplyObject
     {
-       public SmsErrorTypes SmsErrorType { get; set; }
+       public NotificatonErrorTypes SmsErrorType { get; set; }
     }
 }

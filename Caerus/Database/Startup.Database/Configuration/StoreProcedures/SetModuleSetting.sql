@@ -3,7 +3,7 @@ CREATE PROCEDURE [dbo].[SetModuleSetting]
 @Module int,
 @Setting int, 
 @Value nvarchar(250),
-@User bigint = null
+@User nvarchar(128) = null
 AS
 declare @Error nvarchar(max) set @Error = '';
 if @User is null

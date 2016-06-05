@@ -103,6 +103,19 @@ namespace Caerus.Common.Data.DataProviders
             return false;
         }
 
+        public bool HasCacheItemByType<T>(string cacheKey)
+        {
+            if (this._cacheProvider.Contains(cacheKey))
+            {
+                var result = GetCachedItem<T>(cacheKey);
+                if (result != null)
+                    return true;
+            }
+
+            return false;
+        }
+
+
         public T GetCachedItem<T>(string cacheKey)
         {
             return (T)_cacheProvider.Get(cacheKey);
@@ -281,7 +294,7 @@ namespace Caerus.Common.Data.DataProviders
                     var items = changes.Select(c => c.Entity).Distinct();
                     foreach (var item in items)
                     {
-                        HandleTableChange(this, item.GetType());
+                        HandleTableChange(this, item.GetType().BaseType ?? item.GetType());
                     }
                 }
             }

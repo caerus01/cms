@@ -19,9 +19,9 @@ namespace Caerus.Common.Modules.Notification.Interfaces
 
         ReplyObject SaveNotificationTemplate();
 
-        ReplyObject GetNotificationTemplate();
+        ReplyObject GetNotificationTemplate(long refId);
 
-        ReplyObject SearchNotificationTemplates();
+        ReplyObject SearchNotificationTemplates(int step, int size, string orderBy, bool order, string filter);
 
         ISmsProvider SmsProvider { get; }
         IEmailProvider EmailProvider { get; }
